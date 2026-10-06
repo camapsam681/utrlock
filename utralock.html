@@ -1,0 +1,374 @@
+<!-- ============ FILE 2: app.html ============ -->
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>SAMM.NET 🔐</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,-apple-system,sans-serif;-webkit-tap-highlight-color:transparent}
+body{background:#02040a;min-height:100vh;color:#fff;overflow-x:hidden}
+.bg{position:fixed;inset:0;z-index:-2;background:
+  radial-gradient(circle at 20% 15%,rgba(0,150,255,.25),transparent 45%),
+  radial-gradient(circle at 80% 40%,rgba(255,0,60,.2),transparent 45%),
+  radial-gradient(circle at 50% 100%,rgba(120,0,255,.15),transparent 50%),
+  linear-gradient(180deg,#02040a,#050814 60%,#02040a)}
+.bg::before{content:'';position:absolute;inset:0;background-image:
+  linear-gradient(rgba(0,150,255,.04) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(0,150,255,.04) 1px,transparent 1px);
+  background-size:40px 40px;mask-image:radial-gradient(circle at 50% 30%,#000,transparent 75%)}
+
+.wrap{max-width:430px;margin:0 auto;padding:22px 18px 40px;position:relative;z-index:1}
+
+.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.vtag{font-size:9px;letter-spacing:2px;color:#5af;font-weight:700;padding:4px 10px;border:1px solid rgba(0,150,255,.35);border-radius:20px;background:rgba(0,150,255,.08)}
+.close{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:#889;font-size:16px;cursor:pointer}
+
+/* PROFILE */
+.profile{display:flex;align-items:center;gap:16px;margin-bottom:24px}
+.avatar{
+  width:86px;height:86px;border-radius:50%;
+  background:radial-gradient(circle at 30% 30%,#1a2a3f,#0a1020);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;flex-shrink:0;overflow:hidden;
+  box-shadow:0 0 40px rgba(0,150,255,.7);
+}
+.avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.avatar::before{content:'';position:absolute;inset:-6px;border-radius:50%;border:2px dashed rgba(0,180,255,.5);animation:spin 15s linear infinite;pointer-events:none;z-index:2}
+.avatar::after{content:'';position:absolute;inset:-2px;border-radius:50%;border:1px solid rgba(0,180,255,.4);pointer-events:none;z-index:2;box-shadow:inset 0 0 20px rgba(0,150,255,.4)}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.pinfo{flex:1;min-width:0}
+.name-row{display:flex;align-items:center;gap:10px;line-height:1}
+.pname{font-size:32px;font-weight:900;font-style:italic;letter-spacing:-.5px;filter:drop-shadow(0 0 18px rgba(0,150,255,.6))}
+.pname .s1{color:#fff}
+.pname .s2{color:#6bc9ff;text-shadow:0 0 15px rgba(0,180,255,.8)}
+
+.verified{
+  width:28px;height:28px;border-radius:50%;
+  background:linear-gradient(135deg,#00c8ff,#0088ff);
+  display:flex;align-items:center;justify-content:center;
+  font-size:15px;color:#fff;font-weight:900;flex-shrink:0;
+  position:relative;margin-top:2px;
+  box-shadow:0 0 20px rgba(0,180,255,.9),inset 0 -2px 5px rgba(0,0,0,.3);
+}
+.verified::before{content:'';position:absolute;inset:-3px;border-radius:50%;border:1.5px solid rgba(0,200,255,.5);animation:pl2 1.8s infinite}
+@keyframes pl2{0%,100%{box-shadow:0 0 10px rgba(0,180,255,.6)}50%{box-shadow:0 0 25px rgba(0,220,255,1)}}
+.verified::after{content:'✓';text-shadow:0 0 5px rgba(255,255,255,.8)}
+
+.pslogan{font-size:13px;color:#aab;margin-top:8px;display:flex;align-items:center;gap:6px}
+.pslogan::before{content:'🛡';font-size:14px;filter:drop-shadow(0 0 5px rgba(255,100,100,.6))}
+
+.badge{display:inline-block;margin-top:9px;font-size:12px;font-weight:800;letter-spacing:1.5px;color:#6bc9ff;background:rgba(0,150,255,.12);border:1.5px solid rgba(0,180,255,.5);padding:5px 16px;border-radius:20px;box-shadow:0 0 15px rgba(0,150,255,.3)}
+
+.section-label{font-size:12px;color:#aab;letter-spacing:1.5px;margin-bottom:10px;text-transform:uppercase;font-weight:600}
+.section-label::before{content:'⚜ ';color:#00aaff}
+.keybox{display:flex;align-items:center;background:rgba(8,15,30,.8);border:1.5px solid rgba(0,150,255,.4);border-radius:14px;padding:4px;margin-bottom:14px}
+.keyicon{width:50px;height:50px;background:linear-gradient(135deg,#0a1a2e,#0d2540);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;color:#00aaff;flex-shrink:0;margin-right:10px}
+.keyinput{flex:1;background:transparent;border:0;outline:none;color:#fff;font-size:15px;letter-spacing:1.5px;padding:14px 0;font-weight:500}
+.keyinput::placeholder{color:#4a5a70;letter-spacing:2px}
+.pastebtn{width:42px;height:42px;border-radius:10px;background:rgba(0,150,255,.12);border:1px solid rgba(0,150,255,.3);display:flex;align-items:center;justify-content:center;color:#4fb8ff;font-size:18px;cursor:pointer;margin-right:4px}
+
+.activate{width:100%;padding:20px;background:#000;border:2px solid transparent;border-radius:16px;position:relative;cursor:pointer;font-size:16px;font-weight:900;letter-spacing:3px;color:#fff;text-transform:uppercase;margin-bottom:22px}
+.activate::before{content:'';position:absolute;inset:-2px;border-radius:16px;padding:2px;background:linear-gradient(135deg,#00aaff,#ff0040,#00aaff);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:bg 3s linear infinite}
+@keyframes bg{0%,100%{filter:hue-rotate(0deg) drop-shadow(0 0 12px rgba(0,150,255,.8))}50%{filter:hue-rotate(60deg) drop-shadow(0 0 20px rgba(255,0,60,.9))}}
+
+.divider{display:flex;align-items:center;gap:12px;margin:0 0 18px;color:#667;font-size:11px;letter-spacing:1px}
+.divider::before,.divider::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent)}
+
+.share{display:flex;align-items:center;background:rgba(15,25,45,.6);border:1.5px solid rgba(0,150,255,.15);border-radius:14px;padding:16px 18px;margin-bottom:26px;cursor:pointer;text-decoration:none;color:inherit;transition:.2s}
+.share:active{transform:scale(.985);background:rgba(25,40,65,.8)}
+.share .em{font-size:22px;margin-right:14px}
+.share .tt{flex:1;font-size:14px;color:#dde}
+.share .arr{color:#556;font-size:16px}
+
+.features-title{font-size:12px;color:#aab;letter-spacing:1.5px;margin-bottom:14px;text-transform:uppercase;font-weight:600}
+.features-title::before{content:'🔥 '}
+.fbox{border:1px solid rgba(0,150,255,.3);border-radius:18px;padding:16px;background:linear-gradient(180deg,rgba(8,15,30,.6),rgba(15,5,15,.4))}
+.fhead{display:flex;align-items:center;gap:10px;color:#66ccff;font-size:11px;font-weight:800;letter-spacing:2px;margin-bottom:14px;text-transform:uppercase}
+.fhead::before{content:'🛡 ';font-size:14px}
+.fhead::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(0,150,255,.5),transparent)}
+
+.fitem{display:flex;align-items:center;gap:14px;background:rgba(15,22,40,.7);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:14px;margin-bottom:11px}
+.fitem:last-child{margin-bottom:0}
+.ficon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.ficon.red{background:linear-gradient(135deg,#3a0010,#5a0018);border:1px solid rgba(255,0,60,.5);color:#ff3355}
+.ficon.blue{background:linear-gradient(135deg,#001a35,#002a55);border:1px solid rgba(0,150,255,.5);color:#33aaff}
+.ficon.purple{background:linear-gradient(135deg,#200a40,#351060);border:1px solid rgba(150,80,255,.5);color:#a066ff}
+.ficon.green{background:linear-gradient(135deg,#002010,#003020);border:1px solid rgba(0,255,120,.5);color:#00dd77}
+.ficon.orange{background:linear-gradient(135deg,#3a1800,#552500);border:1px solid rgba(255,140,0,.5);color:#ffaa33}
+.ficon.pink{background:linear-gradient(135deg,#400030,#600050);border:1px solid rgba(255,0,200,.5);color:#ff44cc}
+.ficon.cyan{background:linear-gradient(135deg,#003040,#005060);border:1px solid rgba(0,255,220,.5);color:#00eedd}
+.ftitle{font-size:14px;font-weight:700;font-style:italic;margin-bottom:3px}
+.ftitle.red{color:#ff6688}.ftitle.blue{color:#66ccff}.ftitle.purple{color:#bb88ff}.ftitle.green{color:#55ee99}.ftitle.orange{color:#ffbb66}.ftitle.pink{color:#ff77dd}.ftitle.cyan{color:#55ffcc}
+.fdesc{font-size:11px;color:#778;line-height:1.4}
+
+.msg{text-align:center;font-size:12px;padding:11px;border-radius:11px;margin:14px 0;display:none;font-weight:700}
+.msg.on{display:block}
+.ok{background:rgba(0,255,120,.12);color:#00ff88;border:1px solid rgba(0,255,120,.4)}
+.er{background:rgba(255,0,60,.12);color:#ff5577;border:1px solid rgba(255,0,60,.4)}
+
+.mainhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;padding-bottom:15px;border-bottom:1px solid rgba(0,150,255,.25)}
+.mainhead .who{font-size:13px;color:#99a}
+.mainhead .who b{color:#00aaff;text-shadow:0 0 12px rgba(0,150,255,.8)}
+.logout{background:rgba(255,0,60,.15);border:1px solid rgba(255,0,60,.5);color:#ff5577;padding:7px 14px;border-radius:9px;font-size:12px;font-weight:700;cursor:pointer}
+.timer{font-size:10px;color:#00ff88;background:rgba(0,255,120,.1);border:1px solid rgba(0,255,120,.4);padding:4px 10px;border-radius:20px;font-weight:700;letter-spacing:1px;margin-top:6px;display:inline-block}
+
+.super-box{
+  border:1.5px solid rgba(0,180,255,.5);
+  border-radius:22px;
+  padding:18px 16px;
+  background:linear-gradient(180deg,rgba(5,15,30,.85),rgba(15,5,15,.6));
+  box-shadow:0 0 35px rgba(0,150,255,.18), inset 0 0 30px rgba(0,150,255,.04);
+}
+.super-title{display:flex;align-items:center;gap:10px;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid rgba(0,180,255,.25)}
+.super-title .stxt{font-size:20px;font-weight:900;font-style:italic;filter:drop-shadow(0 0 15px rgba(0,150,255,.6));display:flex;align-items:center;gap:0}
+.super-title .s1{color:#fff}
+.super-title .s2{color:#6bc9ff;text-shadow:0 0 12px rgba(0,180,255,.8)}
+.super-title .verified{width:20px;height:20px;font-size:11px;background:linear-gradient(135deg,#00c8ff,#0088ff);box-shadow:0 0 15px rgba(0,180,255,.9)}
+
+.fline{
+  display:flex;align-items:center;gap:12px;
+  background:linear-gradient(145deg,rgba(12,22,40,.9),rgba(8,15,30,.9));
+  border:1.5px solid rgba(255,255,255,.06);
+  border-radius:16px;padding:13px;margin-bottom:10px;cursor:pointer;transition:.25s;
+}
+.fline:last-child{margin-bottom:0}
+.fline:active{transform:scale(.985)}
+.fline.on{
+  border-color:#00ff88;
+  background:linear-gradient(145deg,rgba(0,255,120,.1),rgba(0,150,255,.06));
+  box-shadow:0 0 25px rgba(0,255,120,.35), inset 0 0 20px rgba(0,255,120,.05);
+}
+.fl-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0}
+.fl-txt{flex:1;min-width:0}
+.fl-title{font-size:14px;font-weight:800;font-style:italic;margin-bottom:3px}
+.fl-desc{font-size:10.5px;color:#778;line-height:1.35}
+.fline.on .fl-desc{color:#aab}
+
+/* Nút gạt bật/tắt */
+.sw{
+  position:relative;width:54px;height:28px;
+  background:rgba(80,90,110,.4);
+  border:1.5px solid rgba(120,140,160,.4);
+  border-radius:20px;flex-shrink:0;transition:.3s;
+}
+.sw::after{
+  content:'';position:absolute;top:2px;left:2px;
+  width:20px;height:20px;background:#889;border-radius:50%;
+  transition:.3s;box-shadow:0 2px 6px rgba(0,0,0,.4);
+}
+.fline.on .sw{background:linear-gradient(135deg,#00ff88,#00cc66);border-color:#00ff88;box-shadow:0 0 22px rgba(0,255,120,.8)}
+.fline.on .sw::after{left:28px;background:#fff;box-shadow:0 0 12px rgba(255,255,255,.9)}
+
+.fl-icon.red{background:linear-gradient(145deg,#5a0018,#2a0008);border:1.5px solid rgba(255,0,60,.6);box-shadow:0 0 18px rgba(255,0,60,.35), inset 0 2px 6px rgba(255,80,120,.4);color:#ff3355}
+.fl-icon.blue{background:linear-gradient(145deg,#002a55,#001020);border:1.5px solid rgba(0,150,255,.6);box-shadow:0 0 18px rgba(0,150,255,.35), inset 0 2px 6px rgba(80,180,255,.4);color:#33aaff}
+.fl-icon.purple{background:linear-gradient(145deg,#351060,#150025);border:1.5px solid rgba(150,80,255,.6);box-shadow:0 0 18px rgba(150,80,255,.35), inset 0 2px 6px rgba(180,130,255,.4);color:#a066ff}
+.fl-icon.green{background:linear-gradient(145deg,#003020,#001008);border:1.5px solid rgba(0,255,120,.6);box-shadow:0 0 18px rgba(0,255,120,.35), inset 0 2px 6px rgba(80,255,160,.4);color:#00dd77}
+.fl-icon.orange{background:linear-gradient(145deg,#552500,#251000);border:1.5px solid rgba(255,140,0,.6);box-shadow:0 0 18px rgba(255,140,0,.35), inset 0 2px 6px rgba(255,180,80,.4);color:#ffaa33}
+.fl-icon.pink{background:linear-gradient(145deg,#600050,#250020);border:1.5px solid rgba(255,0,200,.6);box-shadow:0 0 18px rgba(255,0,200,.35), inset 0 2px 6px rgba(255,120,220,.4);color:#ff44cc}
+.fl-icon.cyan{background:linear-gradient(145deg,#005060,#002030);border:1.5px solid rgba(0,255,220,.6);box-shadow:0 0 18px rgba(0,255,220,.35), inset 0 2px 6px rgba(80,255,240,.4);color:#00eedd}
+
+.fl-title.red{color:#ff6688}.fl-title.blue{color:#66ccff}.fl-title.purple{color:#bb88ff}.fl-title.green{color:#55ee99}.fl-title.orange{color:#ffbb66}.fl-title.pink{color:#ff77dd}.fl-title.cyan{color:#55ffcc}
+.fline.on .fl-title{color:#00ff88;text-shadow:0 0 10px rgba(0,255,120,.6)}
+
+.screen{display:none}.screen.on{display:block;animation:fi .4s}
+@keyframes fi{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<audio id="bgm" loop autoplay><source src="https://files.catbox.moe/g65v1o.mp3" type="audio/mpeg"></audio>
+
+<div class="wrap">
+
+  <!-- LOGIN -->
+  <div class="screen on" id="login">
+    <div class="topbar">
+      <div class="vtag">◈ SECURE MODE</div>
+      <div class="close" onclick="alert('Đóng app?')">✕</div>
+    </div>
+
+    <div class="profile">
+      <div class="avatar"><img src="https://files.catbox.moe/28jx5e.png" alt="SAMM.NET"></div>
+      <div class="pinfo">
+        <div class="name-row">
+          <div class="pname"><span class="s1">SAMM</span><span class="s2">.NET</span></div>
+          <div class="verified"></div>
+        </div>
+        <div class="pslogan">Bảo mật · Ổn định · Mạnh mẽ</div>
+        <div class="badge">v2.5.0 STABLE</div>
+      </div>
+    </div>
+
+    <div class="section-label">Nhập key kích hoạt của bạn</div>
+
+    <div class="keybox">
+      <div class="keyicon">🔑</div>
+      <input class="keyinput" id="k" placeholder="VTP-XXX-XXX" autocomplete="off">
+      <div class="pastebtn" onclick="pasteKey()">📋</div>
+    </div>
+
+    <button class="activate" onclick="login()">KÍCH HOẠT NGAY</button>
+    <div class="msg" id="m1"></div>
+
+    <div class="divider">hoặc lấy key share</div>
+    <a class="share" href="https://zalo.me/g/wqnmgz1abybxpub2p9w9" target="_blank" rel="noopener">
+      <span class="em">🎁</span><span class="tt">Xem key share tại trang Info</span><span class="arr">›</span>
+    </a>
+
+    <div class="features-title">Tính năng nổi bật</div>
+    <div class="fbox">
+      <div class="fhead">SAMM.NET CORE FEATURES</div>
+      <div class="fitem"><div class="ficon red">🚀</div><div><div class="ftitle red">Game Booster Pro</div><div class="fdesc">Tối ưu RAM &amp; CPU — Giảm lag tức thì, tăng FPS</div></div></div>
+      <div class="fitem"><div class="ficon blue">🎯</div><div><div class="ftitle blue">Super Aimlock Elite</div><div class="fdesc">Bám đầu cao tỉ lệ — Kéo nhẹ tâm tự ghim mục tiêu</div></div></div>
+      <div class="fitem"><div class="ficon purple">⚡</div><div><div class="ftitle purple">Network Optimizer</div><div class="fdesc">Giảm ping game — Kết nối ổn định</div></div></div>
+      <div class="fitem"><div class="ficon green">🔒</div><div><div class="ftitle green">Headlock 1.0</div><div class="fdesc">Khóa đầu chính xác — Tự động bám mục tiêu</div></div></div>
+      <div class="fitem"><div class="ficon orange">📱</div><div><div class="ftitle orange">Sensitivity 120Hz</div><div class="fdesc">Độ nhạy tối ưu màn hình 120Hz</div></div></div>
+      <div class="fitem"><div class="ficon pink">💥</div><div><div class="ftitle pink">Buff Headshot</div><div class="fdesc">Tăng tỉ lệ headshot — Tâm tự nâng lên đầu</div></div></div>
+      <div class="fitem"><div class="ficon cyan">👁️</div><div><div class="ftitle cyan">Headcheck</div><div class="fdesc">Phát hiện địch nhanh</div></div></div>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="screen" id="main">
+    <div class="mainhead">
+      <div>
+        <div class="who">Xin chào, <b>SAMM.NET VIP</b></div>
+        <div class="timer" id="timer">⏱ Đang tính...</div>
+      </div>
+      <button class="logout" onclick="logout()">THOÁT</button>
+    </div>
+
+    <div class="super-box">
+      <div class="super-title">
+        <div class="stxt"><span class="s1">SAMM</span><span class="s2">.NET</span></div>
+        <div class="verified"></div>
+      </div>
+
+      <div class="fline" id="f1" onclick="pick(1)">
+        <div class="fl-icon red">🚀</div>
+        <div class="fl-txt"><div class="fl-title red">Game Booster Pro</div><div class="fl-desc">Tối ưu RAM &amp; CPU — Giảm lag tức thì, tăng FPS</div></div>
+        <div class="sw"></div>
+      </div>
+
+      <div class="fline" id="f2" onclick="pick(2)">
+        <div class="fl-icon blue">🎯</div>
+        <div class="fl-txt"><div class="fl-title blue">Super Aimlock Elite</div><div class="fl-desc">Bám đầu cao tỉ lệ — Kéo nhẹ tâm tự ghim mục tiêu</div></div>
+        <div class="sw"></div>
+      </div>
+
+      <div class="fline" id="f3" onclick="pick(3)">
+        <div class="fl-icon purple">⚡</div>
+        <div class="fl-txt"><div class="fl-title purple">Network Optimizer</div><div class="fl-desc">Giảm ping game — Kết nối ổn định</div></div>
+        <div class="sw"></div>
+      </div>
+
+      <div class="fline" id="f4" onclick="pick(4)">
+        <div class="fl-icon green">🔒</div>
+        <div class="fl-txt"><div class="fl-title green">Headlock 1.0</div><div class="fl-desc">Khóa đầu chính xác — Tự động bám mục tiêu</div></div>
+        <div class="sw"></div>
+      </div>
+
+      <div class="fline" id="f5" onclick="pick(5)">
+        <div class="fl-icon orange">📱</div>
+        <div class="fl-txt"><div class="fl-title orange">Sensitivity 120Hz</div><div class="fl-desc">Độ nhạy tối ưu màn hình 120Hz</div></div>
+        <div class="sw"></div>
+      </div>
+
+      <div class="fline" id="f6" onclick="pick(6)">
+        <div class="fl-icon pink">💥</div>
+        <div class="fl-txt"><div class="fl-title pink">Buff Headshot</div><div class="fl-desc">Tăng tỉ lệ headshot — Tâm tự nâng lên đầu</div></div>
+        <div class="sw"></div>
+      </div>
+
+      <div class="fline" id="f7" onclick="pick(7)">
+        <div class="fl-icon cyan">👁️</div>
+        <div class="fl-txt"><div class="fl-title cyan">Headcheck</div><div class="fl-desc">Phát hiện địch nhanh</div></div>
+        <div class="sw"></div>
+      </div>
+
+    </div>
+
+    <div class="msg" id="m2"></div>
+  </div>
+
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+const state={1:0,2:0,3:0,4:0,5:0,6:0,7:0};
+const NAME={1:"Game Booster Pro",2:"Super Aimlock Elite",3:"Network Optimizer",4:"Headlock 1.0",5:"Sensitivity 120Hz",6:"Buff Headshot",7:"Headcheck"};
+
+// NHẠC - ẨN NÚT NHƯNG VẪN PHÁT
+const bgm=$('bgm');
+function tryPlayAudio(){ bgm.volume=.6; bgm.play().catch(()=>{}); }
+document.addEventListener('click',tryPlayAudio,{once:true});
+document.addEventListener('touchstart',tryPlayAudio,{once:true});
+tryPlayAudio();
+
+// KEY
+let currentExp=null, timerInt=null;
+function checkKey(inputKey){
+  const list = JSON.parse(localStorage.sammKeys||'[]');
+  const found = list.find(it => it.key === inputKey);
+  if(!found) return {ok:false, msg:'❌ Key không tồn tại!'};
+  if(found.exp && found.exp < Date.now()) return {ok:false, msg:'❌ Key đã hết hạn!'};
+  return {ok:true, data:found};
+}
+function pasteKey(){
+  navigator.clipboard.readText().then(t=>{$('k').value=t.trim()}).catch(()=>alert('Không thể dán!'));
+}
+function login(){
+  const m=$('m1');
+  const k=$('k').value.trim().toUpperCase();
+  if(!k){ m.className='msg on er'; m.textContent='⚠️ Vui lòng nhập key!'; return; }
+  const r = checkKey(k);
+  if(r.ok){
+    m.className='msg on ok'; m.textContent='✅ Kích hoạt thành công!';
+    currentExp = r.data.exp;
+    setTimeout(()=>{
+      $('login').classList.remove('on');
+      $('main').classList.add('on');
+      startTimer();
+    },700);
+  } else {
+    m.className='msg on er'; m.textContent=r.msg;
+  }
+}
+$('k').addEventListener('keypress',e=>{if(e.key==='Enter')login()});
+
+function startTimer(){ clearInterval(timerInt); updateTimer(); timerInt=setInterval(updateTimer,1000); }
+function updateTimer(){
+  const t=$('timer');
+  if(currentExp===null){ t.textContent='💎 VĨNH VIỄN'; t.style.color='#00ff88'; return; }
+  const left = currentExp - Date.now();
+  if(left<=0){
+    t.textContent='⛔ KEY HẾT HẠN'; t.style.color='#ff5577';
+    setTimeout(()=>{ alert('⛔ Key đã hết hạn!'); logout(); },500);
+    clearInterval(timerInt); return;
+  }
+  const d=Math.floor(left/86400000), h=Math.floor((left%86400000)/3600000), m=Math.floor((left%3600000)/60000), s=Math.floor((left%60000)/1000);
+  let str='⏱ '; if(d>0) str+=d+'d ';
+  str+=String(h).padStart(2,'0')+':'+String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
+  t.textContent=str;
+  t.style.color = left<60000 ? '#ff5577' : '#00ff88';
+}
+
+function logout(){
+  clearInterval(timerInt); currentExp=null;
+  [1,2,3,4,5,6,7].forEach(i=>{state[i]=0;$('f'+i).classList.remove('on');});
+  $('main').classList.remove('on'); $('login').classList.add('on');
+  $('k').value=''; $('m1').className='msg';
+}
+
+function pick(n){
+  state[n]=state[n]?0:1;
+  $('f'+n).classList.toggle('on', state[n]===1);
+  const m=$('m2'); m.className='msg on '+(state[n]?'ok':'er');
+  m.textContent=(state[n]?'✅ Đã bật: ':'⛔ Đã tắt: ')+NAME[n];
+  setTimeout(()=>m.className='msg',1500);
+}
+</script>
+</body>
+</html>
