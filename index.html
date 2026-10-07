@@ -2,390 +2,691 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>SAMM.NET 🔐</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>SAMM VIP</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,-apple-system,sans-serif;-webkit-tap-highlight-color:transparent}
-html,body{width:100%;min-height:100vh;overflow-x:hidden;-webkit-text-size-adjust:100%}
-body{background:#000;color:#fff}
-.bg{position:fixed;inset:0;z-index:-2;background:radial-gradient(circle at 20% 15%,rgba(255,0,60,.28),transparent 45%),radial-gradient(circle at 80% 40%,rgba(255,0,60,.18),transparent 45%),radial-gradient(circle at 50% 100%,rgba(255,80,0,.15),transparent 50%),linear-gradient(180deg,#0a0205,#100205 60%,#050001)}
-.bg::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,0,60,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,0,60,.04) 1px,transparent 1px);background-size:40px 40px}
-.wrap{width:100%;max-width:520px;margin:0 auto;padding:22px 20px 40px;position:relative;z-index:1}
-.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
-.vtag{font-size:11px;letter-spacing:2px;color:#ff5577;font-weight:700;padding:6px 14px;border:1px solid rgba(255,0,60,.4);border-radius:20px;background:rgba(255,0,60,.08)}
-.close{width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:#889;font-size:18px;cursor:pointer}
-.profile{display:flex;align-items:center;gap:16px;margin-bottom:26px}
-.avatar{width:100px;height:100px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#1a2a3f,#0a1020);display:flex;align-items:center;justify-content:center;position:relative;flex-shrink:0;overflow:hidden;box-shadow:0 0 45px rgba(255,0,60,.7)}
-.avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%}
-.avatar::before{content:'';position:absolute;inset:-6px;border-radius:50%;border:2px dashed rgba(255,0,60,.6);animation:spin 15s linear infinite;pointer-events:none;z-index:2}
-@keyframes spin{to{transform:rotate(360deg)}}
-.pinfo{flex:1;min-width:0}
-.name-row{display:flex;align-items:center;gap:10px;line-height:1}
-.pname{font-size:34px;font-weight:900;font-style:italic;letter-spacing:-.5px;filter:drop-shadow(0 0 18px rgba(255,0,60,.6));white-space:nowrap}
-.pname .s1{color:#fff}
-.pname .s2{color:#ff5577;text-shadow:0 0 15px rgba(255,0,60,.8)}
-.verified{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#ff0040,#cc0033);display:flex;align-items:center;justify-content:center;font-size:15px;color:#fff;font-weight:900;flex-shrink:0;box-shadow:0 0 20px rgba(255,0,60,.9)}
-.verified::after{content:'✓'}
-.pslogan{font-size:13px;color:#aab;margin-top:8px}
-.pslogan::before{content:'🛡 '}
-.badge{display:inline-block;margin-top:10px;font-size:12px;font-weight:800;letter-spacing:1.5px;color:#ff5577;background:rgba(255,0,60,.12);border:1.5px solid rgba(255,0,60,.5);padding:6px 16px;border-radius:20px}
-.section-label{font-size:14px;color:#aab;letter-spacing:1.5px;margin-bottom:12px;text-transform:uppercase;font-weight:600}
-.section-label::before{content:'⚜ ';color:#ff0040}
-.keybox{display:flex;align-items:center;background:rgba(30,5,15,.7);border:1.5px solid rgba(255,0,60,.4);border-radius:16px;padding:5px;margin-bottom:16px}
-.keyicon{width:58px;height:58px;background:linear-gradient(135deg,#3a0a18,#5a1020);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:26px;color:#ff3355;flex-shrink:0;margin-right:12px}
-.keyinput{flex:1;background:transparent;border:0;outline:none;color:#fff;font-size:18px;letter-spacing:1.5px;padding:16px 8px;font-weight:600;min-width:0}
-.keyinput::placeholder{color:#803040;letter-spacing:2px;font-size:16px}
-.pastebtn{width:50px;height:50px;border-radius:12px;background:rgba(255,0,60,.12);border:1px solid rgba(255,0,60,.3);display:flex;align-items:center;justify-content:center;color:#ff5577;font-size:22px;cursor:pointer;margin-right:4px;flex-shrink:0}
-.activate{width:100%;padding:24px;background:#000;border:2px solid transparent;border-radius:18px;position:relative;cursor:pointer;font-size:19px;font-weight:900;letter-spacing:3px;color:#fff;text-transform:uppercase;margin-bottom:26px}
-.activate::before{content:'';position:absolute;inset:-2px;border-radius:18px;padding:2px;background:linear-gradient(135deg,#ff0040,#ff5500,#ff0040);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:bg 3s linear infinite}
-@keyframes bg{0%,100%{filter:drop-shadow(0 0 12px rgba(255,0,60,.8))}50%{filter:drop-shadow(0 0 20px rgba(255,80,0,.9))}}
-.divider{display:flex;align-items:center;gap:12px;margin:0 0 20px;color:#667;font-size:13px;letter-spacing:1px}
-.divider::before,.divider::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent)}
-.share{display:flex;align-items:center;background:rgba(35,10,20,.6);border:1.5px solid rgba(255,0,60,.2);border-radius:16px;padding:20px;margin-bottom:30px;cursor:pointer;text-decoration:none;color:inherit}
-.share .em{font-size:26px;margin-right:16px}
-.share .tt{flex:1;font-size:15px;color:#dde;font-weight:600}
-.share .arr{color:#556;font-size:18px}
-.features-title{font-size:14px;color:#aab;letter-spacing:1.5px;margin-bottom:16px;text-transform:uppercase;font-weight:600}
-.features-title::before{content:'🔥 '}
-.fbox{border:1.5px solid rgba(255,0,60,.35);border-radius:22px;padding:20px 18px;background:linear-gradient(180deg,rgba(30,5,15,.6),rgba(15,2,10,.5))}
-.fhead{display:flex;align-items:center;gap:12px;color:#ff5577;font-size:13px;font-weight:800;letter-spacing:2px;margin-bottom:18px;text-transform:uppercase}
-.fhead::before{content:'🛡 ';font-size:16px}
-.fhead::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(255,0,60,.5),transparent)}
-.fitem{display:flex;align-items:center;gap:16px;background:rgba(30,10,20,.7);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:16px;margin-bottom:14px}
-.fitem:last-child{margin-bottom:0}
-.ficon{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0}
-.ficon.red{background:linear-gradient(135deg,#3a0010,#5a0018);border:1px solid rgba(255,0,60,.5);color:#ff3355}
-.ficon.blue{background:linear-gradient(135deg,#001a35,#002a55);border:1px solid rgba(0,150,255,.5);color:#33aaff}
-.ficon.purple{background:linear-gradient(135deg,#200a40,#351060);border:1px solid rgba(150,80,255,.5);color:#a066ff}
-.ficon.green{background:linear-gradient(135deg,#002010,#003020);border:1px solid rgba(0,255,120,.5);color:#00dd77}
-.ficon.orange{background:linear-gradient(135deg,#3a1800,#552500);border:1px solid rgba(255,140,0,.5);color:#ffaa33}
-.ficon.pink{background:linear-gradient(135deg,#400030,#600050);border:1px solid rgba(255,0,200,.5);color:#ff44cc}
-.ficon.cyan{background:linear-gradient(135deg,#003040,#005060);border:1px solid rgba(0,255,220,.5);color:#00eedd}
-.ftitle{font-size:16px;font-weight:800;font-style:italic;margin-bottom:4px}
-.ftitle.red{color:#ff6688}.ftitle.blue{color:#66ccff}.ftitle.purple{color:#bb88ff}.ftitle.green{color:#55ee99}.ftitle.orange{color:#ffbb66}.ftitle.pink{color:#ff77dd}.ftitle.cyan{color:#55ffcc}
-.fdesc{font-size:13px;color:#889;line-height:1.5}
-.msg{text-align:center;font-size:14px;padding:13px;border-radius:12px;margin:16px 0;display:none;font-weight:700}
-.msg.on{display:block}
-.ok{background:rgba(0,255,120,.12);color:#00ff88;border:1px solid rgba(0,255,120,.4)}
-.er{background:rgba(255,0,60,.12);color:#ff5577;border:1px solid rgba(255,0,60,.4)}
-.mainhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;padding-bottom:17px;border-bottom:1px solid rgba(255,0,60,.25)}
-.mainhead .who{font-size:14px;color:#99a}
-.mainhead .who b{color:#ff0040}
-.logout{background:rgba(255,0,60,.15);border:1px solid rgba(255,0,60,.5);color:#ff5577;padding:9px 16px;border-radius:10px;font-size:13px;font-weight:700;cursor:pointer}
-.timer{font-size:12px;color:#00ff88;background:rgba(0,255,120,.1);border:1px solid rgba(0,255,120,.4);padding:6px 13px;border-radius:20px;font-weight:700;letter-spacing:1px;margin-top:7px;display:inline-block}
-.super-box{border:1.5px solid rgba(255,0,60,.5);border-radius:24px;padding:22px 18px;background:linear-gradient(180deg,rgba(30,5,15,.85),rgba(15,2,10,.6));box-shadow:0 0 35px rgba(255,0,60,.18);margin-bottom:18px}
-.super-title{display:flex;align-items:center;gap:12px;margin-bottom:22px;padding-bottom:16px;border-bottom:1px solid rgba(255,0,60,.25)}
-.super-title .stxt{font-size:26px;font-weight:900;font-style:italic;display:flex;align-items:center}
-.super-title .s1{color:#fff}
-.super-title .s2{color:#ff5577;text-shadow:0 0 12px rgba(255,0,60,.8)}
-.super-title .verified{width:22px;height:22px;font-size:12px}
-.fline{display:flex;align-items:center;gap:14px;background:linear-gradient(145deg,rgba(30,10,20,.9),rgba(15,5,15,.9));border:1.5px solid rgba(255,255,255,.06);border-radius:18px;padding:16px;margin-bottom:12px;cursor:pointer;transition:.25s}
-.fline:last-child{margin-bottom:0}
-.fline.on{border-color:#00ff88;background:linear-gradient(145deg,rgba(0,255,120,.1),rgba(255,0,60,.06));box-shadow:0 0 25px rgba(0,255,120,.35)}
-.fl-icon{width:60px;height:60px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:30px;flex-shrink:0}
-.fl-txt{flex:1;min-width:0}
-.fl-title{font-size:16px;font-weight:800;font-style:italic;margin-bottom:4px}
-.fl-desc{font-size:12.5px;color:#889;line-height:1.4}
-.fline.on .fl-desc{color:#aab}
-.sw{position:relative;width:62px;height:34px;background:rgba(80,90,110,.4);border:1.5px solid rgba(120,140,160,.4);border-radius:22px;flex-shrink:0;transition:.3s}
-.sw::after{content:'';position:absolute;top:2px;left:2px;width:26px;height:26px;background:#889;border-radius:50%;transition:.3s;box-shadow:0 2px 6px rgba(0,0,0,.4)}
-.fline.on .sw{background:linear-gradient(135deg,#00ff88,#00cc66);border-color:#00ff88;box-shadow:0 0 22px rgba(255,255,255,.3)}
-.fline.on .sw::after{left:34px;background:#fff}
-.fl-icon.red{background:linear-gradient(145deg,#5a0018,#2a0008);border:1.5px solid rgba(255,0,60,.6);color:#ff3355}
-.fl-icon.blue{background:linear-gradient(145deg,#002a55,#001020);border:1.5px solid rgba(0,150,255,.6);color:#33aaff}
-.fl-icon.purple{background:linear-gradient(145deg,#351060,#150025);border:1.5px solid rgba(150,80,255,.6);color:#a066ff}
-.fl-icon.green{background:linear-gradient(145deg,#003020,#001008);border:1.5px solid rgba(0,255,120,.6);color:#00dd77}
-.fl-icon.orange{background:linear-gradient(145deg,#552500,#251000);border:1.5px solid rgba(255,140,0,.6);color:#ffaa33}
-.fl-icon.pink{background:linear-gradient(145deg,#600050,#250020);border:1.5px solid rgba(255,0,200,.6);color:#ff44cc}
-.fl-icon.cyan{background:linear-gradient(145deg,#005060,#002030);border:1.5px solid rgba(0,255,220,.6);color:#00eedd}
-.fl-icon.yellow{background:linear-gradient(145deg,#554400,#2a2000);border:1.5px solid rgba(255,220,0,.6);color:#ffdd33}
-.fl-icon.teal{background:linear-gradient(145deg,#004848,#002020);border:1.5px solid rgba(0,220,180,.6);color:#00ddb8}
-.fl-title.red{color:#ff6688}.fl-title.blue{color:#66ccff}.fl-title.purple{color:#bb88ff}.fl-title.green{color:#55ee99}.fl-title.orange{color:#ffbb66}.fl-title.pink{color:#ff77dd}.fl-title.cyan{color:#55ffcc}.fl-title.yellow{color:#ffdd66}.fl-title.teal{color:#66ffdd}
-.fline.on .fl-title{color:#00ff88}
-.tuner-box{border:1.5px solid rgba(255,0,60,.5);border-radius:22px;padding:20px 18px 24px;background:linear-gradient(180deg,rgba(30,5,15,.85),rgba(20,2,10,.6));box-shadow:0 0 35px rgba(255,0,60,.18);margin-bottom:18px}
-.tuner-head{display:flex;align-items:center;gap:12px;font-size:20px;font-weight:900;color:#fff;margin-bottom:22px}
-.tuner-head::before{content:'⚙';font-size:24px;color:#ff0040}
-.tuner-item{margin-bottom:22px}
-.tuner-item:last-child{margin-bottom:0}
-.tuner-label{display:flex;justify-content:space-between;align-items:center;font-size:16px;font-weight:800;color:#fff;margin-bottom:12px}
-.tuner-label .val{font-size:20px;font-weight:900;font-style:italic;color:#ff0040;text-shadow:0 0 10px rgba(255,0,60,.9)}
-.slider-wrap{position:relative;height:32px;display:flex;align-items:center}
-.slider-track{position:absolute;left:0;right:0;height:8px;background:rgba(80,80,90,.35);border-radius:5px}
-.slider-fill{position:absolute;left:0;top:0;height:100%;background:linear-gradient(90deg,#ff0040,#ff3344);border-radius:5px;box-shadow:0 0 12px rgba(255,0,60,.9);transition:width .05s}
-.slider-thumb{position:absolute;width:30px;height:30px;background:#fff;border-radius:50%;box-shadow:0 0 15px rgba(255,255,255,.6),0 0 25px rgba(255,0,60,.5);transform:translateX(-50%);transition:left .05s;pointer-events:none;top:50%;margin-top:-15px}
-input[type="range"]{position:relative;-webkit-appearance:none;appearance:none;width:100%;height:32px;background:transparent;outline:none;cursor:pointer;z-index:2;margin:0}
-input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:30px;height:30px;background:transparent}
-.screen{display:none}
-.screen.on{display:block}
+    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    html, body {
+        width: 100%; height: 100%;
+        background: #000;
+        overflow: hidden;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        user-select: none;
+        -webkit-user-select: none;
+    }
+
+    /* ===== MATRIX RAIN ===== */
+    .matrix-canvas {
+        position: fixed; inset: 0;
+        z-index: 50;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.4s;
+    }
+    .matrix-canvas.show { opacity: 0.75; }
+
+    /* ===== ESP ===== */
+    .esp-layer {
+        position: fixed; inset: 0;
+        pointer-events: none;
+        z-index: 100;
+    }
+    .esp-box {
+        position: absolute;
+        border: 2px solid #00FF41;
+        border-radius: 4px;
+        box-shadow: 0 0 12px rgba(0,255,65,0.8), inset 0 0 20px rgba(0,255,65,0.1);
+        display: none;
+        animation: boxPulse 2s infinite;
+    }
+    .esp-box.show { display: block; }
+    @keyframes boxPulse {
+        0%,100% { box-shadow: 0 0 12px rgba(0,255,65,0.8), inset 0 0 20px rgba(0,255,65,0.1); }
+        50% { box-shadow: 0 0 20px rgba(0,255,65,1), inset 0 0 30px rgba(0,255,65,0.2); }
+    }
+
+    .esp-name {
+        position: absolute;
+        font-size: 11px;
+        color: #00FF41;
+        font-family: "Courier New", monospace;
+        font-weight: bold;
+        text-shadow: 0 0 6px #00FF41, 0 0 2px #000;
+        white-space: nowrap;
+        display: none;
+    }
+    .esp-name.show { display: block; }
+    .esp-name::before {
+        content: "> ";
+        color: #00FF41;
+    }
+
+    .esp-health {
+        position: absolute;
+        width: 4px;
+        background: linear-gradient(to bottom, #00FF41, #00AA22);
+        border-radius: 2px;
+        display: none;
+        box-shadow: 0 0 8px #00FF41;
+    }
+    .esp-health.show { display: block; }
+
+    .esp-health-bg {
+        position: absolute;
+        width: 4px;
+        background: rgba(0,0,0,0.7);
+        border-radius: 2px;
+        display: none;
+        border: 1px solid rgba(0,255,65,0.3);
+    }
+    .esp-health-bg.show { display: block; }
+
+    .esp-distance {
+        position: absolute;
+        font-size: 10px;
+        color: #00FF41;
+        font-family: "Courier New", monospace;
+        font-weight: bold;
+        text-shadow: 0 0 6px #00FF41, 0 0 2px #000;
+        display: none;
+    }
+    .esp-distance.show { display: block; }
+
+    .esp-skeleton {
+        position: absolute;
+        width: 100%; height: 100%;
+        top: 0; left: 0;
+        display: none;
+    }
+    .esp-skeleton.show { display: block; }
+    .esp-skeleton line {
+        stroke: #00FF41;
+        stroke-width: 2;
+        opacity: 0.9;
+        filter: drop-shadow(0 0 4px #00FF41);
+    }
+
+    .esp-tracer {
+        position: absolute;
+        bottom: 0; left: 50%;
+        width: 2px;
+        height: 50%;
+        background: linear-gradient(to top, #00FF41, transparent);
+        transform-origin: bottom center;
+        transform: rotate(-15deg);
+        display: none;
+        box-shadow: 0 0 8px #00FF41;
+    }
+    .esp-tracer.show { display: block; }
+
+    .enemy-count {
+        position: fixed;
+        top: 20px; left: 50%;
+        transform: translateX(-50%);
+        font-size: 22px;
+        font-weight: 800;
+        font-family: "Courier New", monospace;
+        color: #00FF41;
+        text-shadow: 0 0 10px #00FF41, 0 0 4px #000;
+        display: none;
+        z-index: 102;
+        letter-spacing: 3px;
+        animation: glitch 2s infinite;
+    }
+    .enemy-count.show { display: block; }
+    @keyframes glitch {
+        0%,90%,100% { transform: translateX(-50%); }
+        92% { transform: translateX(calc(-50% - 3px)); }
+        94% { transform: translateX(calc(-50% + 3px)); }
+        96% { transform: translateX(-50%); }
+    }
+
+    .aim-crosshair {
+        position: fixed;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        width: 40px; height: 40px;
+        display: none;
+        z-index: 101;
+    }
+    .aim-crosshair.show { display: block; }
+    .aim-crosshair::before,
+    .aim-crosshair::after {
+        content: "";
+        position: absolute;
+        background: #00FF41;
+        box-shadow: 0 0 8px #00FF41;
+    }
+    .aim-crosshair::before {
+        width: 2px; height: 100%;
+        left: 50%; top: 0;
+        transform: translateX(-50%);
+    }
+    .aim-crosshair::after {
+        height: 2px; width: 100%;
+        top: 50%; left: 0;
+        transform: translateY(-50%);
+    }
+
+    .aim-neck {
+        position: fixed;
+        top: 45%; left: 50%;
+        transform: translate(-50%, -50%);
+        width: 24px; height: 24px;
+        border: 2px dashed #FFD700;
+        border-radius: 50%;
+        display: none;
+        z-index: 101;
+        box-shadow: 0 0 10px #FFD700;
+    }
+    .aim-neck.show { display: block; }
+
+    .aim-lock {
+        position: fixed;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        width: 60px; height: 60px;
+        border: 2px solid #FF5252;
+        border-radius: 50%;
+        display: none;
+        z-index: 101;
+        animation: lockPulse 1s infinite;
+        box-shadow: 0 0 15px #FF5252;
+    }
+    .aim-lock.show { display: block; }
+    @keyframes lockPulse {
+        0%,100% { transform: translate(-50%,-50%) scale(1); opacity: 1; }
+        50% { transform: translate(-50%,-50%) scale(1.2); opacity: 0.5; }
+    }
+
+    /* ===== MENU ===== */
+    .menu {
+        position: fixed;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%) scale(0.8);
+        width: 340px;
+        background: rgba(10, 15, 30, 0.97);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-radius: 14px;
+        padding: 14px;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.9), 0 0 0 1px rgba(0,255,65,0.3);
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.25s ease;
+        z-index: 9999;
+        display: none;
+    }
+    .menu.show {
+        display: block;
+        opacity: 1;
+        pointer-events: auto;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    .menu-header {
+        display: flex; align-items: center; justify-content: space-between;
+        margin-bottom: 12px;
+    }
+    .brand .title {
+        font-size: 20px; font-weight: 800;
+        background: linear-gradient(90deg, #fff, #00FF41);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: 1px;
+    }
+    .brand .sub {
+        font-size: 10px; color: #00FF41;
+        letter-spacing: 3px; margin-top: 2px;
+    }
+    .close-btn {
+        width: 28px; height: 28px;
+        background: #E53935;
+        border: none; border-radius: 6px;
+        color: #fff; font-weight: bold;
+        cursor: pointer; font-size: 14px;
+    }
+
+    .tabs {
+        display: flex; gap: 4px;
+        margin-bottom: 12px;
+        border-bottom: 1px solid #1e3a5f;
+        padding-bottom: 8px;
+    }
+    .tab {
+        flex: 1;
+        padding: 6px 4px;
+        text-align: center;
+        font-size: 11px;
+        color: #666;
+        cursor: pointer;
+        border-radius: 6px;
+        transition: all 0.2s;
+    }
+    .tab.active {
+        color: #00FF41;
+        background: rgba(0,255,65,0.15);
+        font-weight: 600;
+    }
+
+    .features { max-height: 380px; overflow-y: auto; }
+    .features::-webkit-scrollbar { width: 4px; }
+    .features::-webkit-scrollbar-thumb { background: #1e3a5f; border-radius: 4px; }
+
+    .feature {
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 10px 8px;
+        border-radius: 8px;
+        margin-bottom: 4px;
+        transition: background 0.2s;
+    }
+    .feature:hover { background: rgba(0,255,65,0.08); }
+    .feature span { font-size: 13px; color: #ddd; }
+
+    .switch {
+        position: relative;
+        width: 44px; height: 24px;
+        background: #2a2a3e;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: background 0.25s;
+        flex-shrink: 0;
+    }
+    .switch::after {
+        content: "";
+        position: absolute;
+        top: 3px; left: 3px;
+        width: 18px; height: 18px;
+        background: #666;
+        border-radius: 50%;
+        transition: all 0.25s;
+    }
+    .switch.on { background: #00FF41; }
+    .switch.on::after {
+        left: 23px;
+        background: #fff;
+        box-shadow: 0 0 8px rgba(0,255,65,0.8);
+    }
+
+    .status {
+        display: flex; align-items: center; gap: 6px;
+        margin-top: 12px;
+        padding-top: 10px;
+        border-top: 1px solid #1e3a5f;
+        font-size: 11px; color: #00FF41;
+    }
+    .status::before {
+        content: "";
+        width: 7px; height: 7px;
+        background: #00FF41;
+        border-radius: 50%;
+        box-shadow: 0 0 8px #00FF41;
+        animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse {
+        0%,100% { opacity: 1; }
+        50% { opacity: 0.3; }
+    }
+
+    .section-title {
+        font-size: 10px;
+        color: #00FF41;
+        letter-spacing: 2px;
+        padding: 8px 8px 4px;
+        font-weight: 700;
+    }
+    .music-item {
+        display: flex; align-items: center; gap: 10px;
+        padding: 8px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background 0.2s;
+        margin-bottom: 4px;
+    }
+    .music-item:hover { background: rgba(0,255,65,0.1); }
+    .music-item.playing { background: rgba(0,255,65,0.2); }
+    .music-icon {
+        width: 28px; height: 28px;
+        border-radius: 50%;
+        background: #1e3a5f;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 12px;
+        flex-shrink: 0;
+        color: #00FF41;
+    }
+    .music-item.playing .music-icon {
+        background: #00FF41;
+        color: #000;
+        animation: pulse 1s infinite;
+    }
+    .music-name {
+        font-size: 12px; color: #ddd;
+        flex: 1;
+    }
+    .music-item.playing .music-name { color: #00FF41; font-weight: 600; }
 </style>
 </head>
 <body>
 
-<div class="bg"></div>
-<audio id="bgm" loop autoplay><source src="https://files.catbox.moe/g65v1o.mp3" type="audio/mpeg"></audio>
+<canvas class="matrix-canvas" id="matrixCanvas"></canvas>
 
-<div class="wrap">
+<div class="esp-layer">
+    <div class="esp-box" id="espBox1" style="top:25%; left:20%; width:120px; height:180px;"></div>
+    <div class="esp-health-bg" id="espHBg1" style="top:25%; left:calc(20% + 124px); height:180px;"></div>
+    <div class="esp-health" id="espHealth1" style="top:25%; left:calc(20% + 124px); height:120px;"></div>
+    <div class="esp-name" id="espName1" style="top:calc(25% - 18px); left:20%;">Player_01</div>
+    <div class="esp-distance" id="espDist1" style="top:calc(25% + 185px); left:20%;">[32m]</div>
 
-  <div class="screen on" id="login">
-    <div class="topbar">
-      <div class="vtag">◈ SECURE MODE</div>
-      <div class="close" onclick="alert('Đóng app?')">✕</div>
-    </div>
+    <div class="esp-box" id="espBox2" style="top:35%; left:65%; width:100px; height:150px;"></div>
+    <div class="esp-health-bg" id="espHBg2" style="top:35%; left:calc(65% + 104px); height:150px;"></div>
+    <div class="esp-health" id="espHealth2" style="top:35%; left:calc(65% + 104px); height:90px;"></div>
+    <div class="esp-name" id="espName2" style="top:calc(35% - 18px); left:65%;">Player_02</div>
+    <div class="esp-distance" id="espDist2" style="top:calc(35% + 155px); left:65%;">[58m]</div>
 
-    <div class="profile">
-      <div class="avatar"><img src="https://files.catbox.moe/jydf1z.png" alt="SAMM.NET"></div>
-      <div class="pinfo">
-        <div class="name-row">
-          <div class="pname"><span class="s1">SAMM</span><span class="s2">.NET</span></div>
-          <div class="verified"></div>
+    <svg class="esp-skeleton" id="espSkeleton">
+        <line x1="26%" y1="28%" x2="26%" y2="40%"/>
+        <line x1="26%" y1="30%" x2="22%" y2="34%"/>
+        <line x1="26%" y1="30%" x2="30%" y2="34%"/>
+        <line x1="26%" y1="40%" x2="23%" y2="50%"/>
+        <line x1="26%" y1="40%" x2="29%" y2="50%"/>
+        <line x1="26%" y1="28%" x2="26%" y2="26%"/>
+    </svg>
+
+    <div class="esp-tracer" id="espTracer"></div>
+</div>
+
+<div class="enemy-count" id="enemyCount">ENEMY: 4</div>
+
+<div class="aim-crosshair" id="aimCrosshair"></div>
+<div class="aim-neck" id="aimNeck"></div>
+<div class="aim-lock" id="aimLock"></div>
+
+<div class="menu" id="menu">
+    <div class="menu-header">
+        <div class="brand">
+            <div class="title">SAMM VIP</div>
+            <div class="sub">VIP SUITE</div>
         </div>
-        <div class="pslogan">Bảo mật · Ổn định · Mạnh mẽ</div>
-        <div class="badge">v2.5.0 STABLE</div>
-      </div>
+        <button class="close-btn" onclick="hideMenu()">X</button>
     </div>
 
-    <div class="section-label">Nhập key kích hoạt của bạn</div>
-
-    <div class="keybox">
-      <div class="keyicon">🔑</div>
-      <input class="keyinput" id="k" placeholder="VTP-XXX-XXX" autocomplete="off">
-      <div class="pastebtn" onclick="pasteKey()">📋</div>
+    <div class="tabs">
+        <div class="tab active" data-tab="esp">ESP</div>
+        <div class="tab" data-tab="aim">AIM</div>
+        <div class="tab" data-tab="misc">MISC</div>
+        <div class="tab" data-tab="colors">COLORS</div>
+        <div class="tab" data-tab="settings">SETTINGS</div>
     </div>
 
-    <button class="activate" onclick="login()">KÍCH HOẠT NGAY</button>
-    <div class="msg" id="m1"></div>
+    <div class="features" id="features"></div>
 
-    <div class="divider">hoặc lấy key share</div>
-    <a class="share" href="https://zalo.me/g/wqnmgz1abybxpub2p9w9" target="_blank" rel="noopener">
-      <span class="em">🎁</span><span class="tt">Xem key share tại trang Info</span><span class="arr">›</span>
-    </a>
-
-    <div class="features-title">Tính năng nổi bật</div>
-    <div class="fbox">
-      <div class="fhead">SAMM.NET CORE FEATURES</div>
-      <div class="fitem"><div class="ficon red">🚀</div><div><div class="ftitle red">Game Booster Pro</div><div class="fdesc">Tối ưu RAM &amp; CPU — Giảm lag tức thì, tăng FPS</div></div></div>
-      <div class="fitem"><div class="ficon blue">🎯</div><div><div class="ftitle blue">Super Aimlock Elite</div><div class="fdesc">Bám đầu cao tỉ lệ — Kéo nhẹ tâm tự ghim mục tiêu</div></div></div>
-      <div class="fitem"><div class="ficon purple">⚡</div><div><div class="ftitle purple">Network Optimizer</div><div class="fdesc">Giảm ping game — Kết nối ổn định</div></div></div>
-      <div class="fitem"><div class="ficon green">🔒</div><div><div class="ftitle green">Headlock 1.0</div><div class="fdesc">Khóa đầu chính xác — Tự động bám mục tiêu</div></div></div>
-      <div class="fitem"><div class="ficon orange">📱</div><div><div class="ftitle orange">Sensitivity 120Hz</div><div class="fdesc">Độ nhạy tối ưu màn hình 120Hz</div></div></div>
-      <div class="fitem"><div class="ficon pink">💥</div><div><div class="ftitle pink">Buff Headshot</div><div class="fdesc">Tăng tỉ lệ headshot — Tâm tự nâng lên đầu</div></div></div>
-      <div class="fitem"><div class="ficon cyan">👁️</div><div><div class="ftitle cyan">Headcheck</div><div class="fdesc">Phát hiện địch nhanh</div></div></div>
-    </div>
-  </div>
-
-  <div class="screen" id="main">
-    <div class="mainhead">
-      <div>
-        <div class="who">Xin chào, <b>SAMM.NET VIP</b></div>
-        <div class="timer" id="timer">⏱ Đang tính...</div>
-      </div>
-      <button class="logout" onclick="logout()">THOÁT</button>
-    </div>
-
-    <div class="super-box">
-      <div class="super-title">
-        <div class="stxt"><span class="s1">SAMM</span><span class="s2">.NET</span></div>
-        <div class="verified"></div>
-      </div>
-
-      <div class="fline" id="f1" onclick="pick(1)"><div class="fl-icon red">🚀</div><div class="fl-txt"><div class="fl-title red">Game Booster Pro</div><div class="fl-desc">Tối ưu RAM &amp; CPU — Giảm lag, tăng FPS</div></div><div class="sw"></div></div>
-      <div class="fline" id="f2" onclick="pick(2)"><div class="fl-icon blue">🎯</div><div class="fl-txt"><div class="fl-title blue">Super Aimlock Elite</div><div class="fl-desc">Bám đầu cao tỉ lệ — Ghim mục tiêu</div></div><div class="sw"></div></div>
-      <div class="fline" id="f3" onclick="pick(3)"><div class="fl-icon purple">⚡</div><div class="fl-txt"><div class="fl-title purple">Network Optimizer</div><div class="fl-desc">Giảm ping — Kết nối ổn định</div></div><div class="sw"></div></div>
-      <div class="fline" id="f4" onclick="pick(4)"><div class="fl-icon green">🔒</div><div class="fl-txt"><div class="fl-title green">Headlock 1.0</div><div class="fl-desc">Khóa đầu chính xác</div></div><div class="sw"></div></div>
-      <div class="fline" id="f5" onclick="pick(5)"><div class="fl-icon orange">📱</div><div class="fl-txt"><div class="fl-title orange">Sensitivity 120Hz</div><div class="fl-desc">Độ nhạy màn hình 120Hz</div></div><div class="sw"></div></div>
-      <div class="fline" id="f6" onclick="pick(6)"><div class="fl-icon pink">💥</div><div class="fl-txt"><div class="fl-title pink">Buff Headshot</div><div class="fl-desc">Tăng tỉ lệ headshot</div></div><div class="sw"></div></div>
-      <div class="fline" id="f7" onclick="pick(7)"><div class="fl-icon cyan">👁️</div><div class="fl-txt"><div class="fl-title cyan">Headcheck</div><div class="fl-desc">Phát hiện địch nhanh</div></div><div class="sw"></div></div>
-      <div class="fline" id="f8" onclick="pick(8)"><div class="fl-icon yellow">🎯</div><div class="fl-txt"><div class="fl-title yellow">AIM BOT</div><div class="fl-desc">Tự động ngắm bắn mục tiêu thông minh</div></div><div class="sw"></div></div>
-      <div class="fline" id="f9" onclick="pick(9)"><div class="fl-icon teal">💠</div><div class="fl-txt"><div class="fl-title teal">AIMLOCK 2.0</div><div class="fl-desc">Khóa mục tiêu thế hệ mới — Bám dính cực mượt</div></div><div class="sw"></div></div>
-    </div>
-
-    <div class="tuner-box">
-      <div class="tuner-head">Advanced Tuner</div>
-      <div class="tuner-item">
-        <div class="tuner-label"><span>DPI</span><span class="val" id="dpiVal">800</span></div>
-        <div class="slider-wrap">
-          <div class="slider-track"></div>
-          <div class="slider-fill" id="dpiFill"></div>
-          <div class="slider-thumb" id="dpiThumb"></div>
-          <input type="range" id="dpiSlider" min="100" max="800" step="10" value="800">
-        </div>
-      </div>
-      <div class="tuner-item">
-        <div class="tuner-label"><span>Recoil Reduction</span><span class="val" id="recVal">50</span></div>
-        <div class="slider-wrap">
-          <div class="slider-track"></div>
-          <div class="slider-fill" id="recFill"></div>
-          <div class="slider-thumb" id="recThumb"></div>
-          <input type="range" id="recSlider" min="0" max="100" step="1" value="50">
-        </div>
-      </div>
-    </div>
-
-    <div class="msg" id="m2"></div>
-  </div>
-
+    <div class="status">ONLINE</div>
 </div>
 
 <script>
-var $ = function(id){ return document.getElementById(id); };
-var state = {1:0,2:0,3:0,4:0,5:0,6:0,7:0,8:0,9:0};
-var NAME = {
-  1:"Game Booster Pro",
-  2:"Super Aimlock Elite",
-  3:"Network Optimizer",
-  4:"Headlock 1.0",
-  5:"Sensitivity 120Hz",
-  6:"Buff Headshot",
-  7:"Headcheck",
-  8:"AIM BOT",
-  9:"AIMLOCK 2.0"
-};
+    var tabData = {
+        esp: [
+            { name: "Enable ESP", on: false, key: "enableEsp" },
+            { name: "Player box", on: false, key: "playerBox" },
+            { name: "Top tracer", on: false, key: "topTracer" },
+            { name: "Line target: TOP", on: false, key: "lineTarget" },
+            { name: "Health bar", on: false, key: "healthBar" },
+            { name: "Player name", on: false, key: "playerName" },
+            { name: "Distance", on: false, key: "distance" },
+            { name: "Skeleton", on: false, key: "skeleton" },
+            { name: "Enemy count", on: false, key: "enemyCount" }
+        ],
+        aim: [
+            { name: "AIM BOT", on: false, key: "aimBot" },
+            { name: "AIMNECK", on: false, key: "aimNeck" },
+            { name: "AIMLOCK", on: false, key: "aimLock" }
+        ],
+        misc: "music",
+        colors: [
+            { name: "Box color", on: false, key: "cBox" },
+            { name: "Tracer color", on: false, key: "cTracer" },
+            { name: "Name color", on: false, key: "cName" },
+            { name: "Skeleton color", on: false, key: "cSkeleton" }
+        ],
+        settings: [
+            { name: "Save config", on: false, key: "saveConfig" },
+            { name: "Auto load", on: false, key: "autoLoad" },
+            { name: "Anti screenshot", on: false, key: "antiSS" }
+        ]
+    };
 
-var bgm = $('bgm');
-function tryPlayAudio(){ bgm.volume = 0.6; bgm.play().catch(function(){}); }
-document.addEventListener('click', tryPlayAudio, {once:true});
-document.addEventListener('touchstart', tryPlayAudio, {once:true});
-tryPlayAudio();
+    var musicList = [
+        { name: "Nhac 1", url: "https://files.catbox.moe/zy9l6e.mp3" },
+        { name: "Nhac 2", url: "https://files.catbox.moe/g65v1o.mp3" },
+        { name: "Nhac 3", url: "https://files.catbox.moe/zy9l6e.mp3" }
+    ];
 
-var currentExp = null, timerInt = null;
+    var currentTab = "esp";
+    var currentMusic = -1;
+    var audio = new Audio();
+    var container = document.getElementById("features");
 
-function saveActivatedKey(key, exp){
-  localStorage.setItem('sammActiveKey', JSON.stringify({key:key, exp:exp, time:Date.now()}));
-}
-function getActivatedKey(){
-  try { return JSON.parse(localStorage.getItem('sammActiveKey') || 'null'); }
-  catch(e){ return null; }
-}
-function clearActivatedKey(){
-  localStorage.removeItem('sammActiveKey');
-}
+    // MATRIX RAIN
+    var canvas = document.getElementById("matrixCanvas");
+    var ctx = canvas.getContext("2d");
+    var matrixInterval = null;
+    var columns = [];
+    var fontSize = 14;
+    var chars = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*(){}[]<>";
 
-function checkKey(inputKey){
-  var list = JSON.parse(localStorage.getItem('sammKeys') || '[]');
-  var found = null;
-  for(var i=0;i<list.length;i++){
-    if(list[i].key === inputKey){ found = list[i]; break; }
-  }
-  if(!found) return {ok:false, msg:'❌ Key không tồn tại!'};
-  if(found.exp && found.exp < Date.now()) return {ok:false, msg:'❌ Key đã hết hạn!'};
-  return {ok:true, data:found};
-}
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        var colCount = Math.floor(canvas.width / fontSize);
+        columns = [];
+        for (var i = 0; i < colCount; i++) {
+            columns[i] = Math.random() * canvas.height / fontSize;
+        }
+    }
 
-function autoLogin(){
-  var saved = getActivatedKey();
-  if(!saved) return false;
-  if(saved.exp && saved.exp < Date.now()){ clearActivatedKey(); return false; }
-  currentExp = saved.exp;
-  $('login').classList.remove('on');
-  $('main').classList.add('on');
-  startTimer();
-  return true;
-}
+    function drawMatrix() {
+        ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.font = fontSize + "px monospace";
 
-function pasteKey(){
-  navigator.clipboard.readText().then(function(t){
-    $('k').value = t.trim();
-  }).catch(function(){ alert('Không thể dán!'); });
-}
+        for (var i = 0; i < columns.length; i++) {
+            var text = chars[Math.floor(Math.random() * chars.length)];
+            var x = i * fontSize;
+            var y = columns[i] * fontSize;
 
-function login(){
-  var m = $('m1');
-  var k = $('k').value.trim().toUpperCase();
-  if(!k){ m.className='msg on er'; m.textContent='⚠️ Vui lòng nhập key!'; return; }
-  var r = checkKey(k);
-  if(r.ok){
-    m.className='msg on ok'; m.textContent='✅ Kích hoạt thành công!';
-    currentExp = r.data.exp;
-    saveActivatedKey(k, r.data.exp);
-    setTimeout(function(){
-      $('login').classList.remove('on');
-      $('main').classList.add('on');
-      startTimer();
-    }, 700);
-  } else {
-    m.className='msg on er'; m.textContent = r.msg;
-  }
-}
+            if (Math.random() > 0.975) {
+                ctx.fillStyle = "#FFFFFF";
+                ctx.shadowColor = "#00FF41";
+                ctx.shadowBlur = 10;
+            } else {
+                ctx.fillStyle = "#00FF41";
+                ctx.shadowColor = "#00FF41";
+                ctx.shadowBlur = 4;
+            }
+            ctx.fillText(text, x, y);
+            ctx.shadowBlur = 0;
 
-var kInput = $('k');
-if(kInput){
-  kInput.addEventListener('keypress', function(e){ if(e.key === 'Enter') login(); });
-}
+            if (y > canvas.height && Math.random() > 0.975) {
+                columns[i] = 0;
+            }
+            columns[i]++;
+        }
+    }
 
-function startTimer(){
-  clearInterval(timerInt);
-  updateTimer();
-  timerInt = setInterval(updateTimer, 1000);
-}
+    function startMatrix() {
+        if (matrixInterval) return;
+        resizeCanvas();
+        canvas.classList.add("show");
+        matrixInterval = setInterval(drawMatrix, 33);
+    }
 
-function updateTimer(){
-  var t = $('timer');
-  if(currentExp === null){
-    t.textContent = '💎 VĨNH VIỄN';
-    t.style.color = '#00ff88';
-    return;
-  }
-  var left = currentExp - Date.now();
-  if(left <= 0){
-    t.textContent = '⛔ KEY HẾT HẠN';
-    t.style.color = '#ff5577';
-    clearInterval(timerInt);
-    clearActivatedKey();
-    setTimeout(function(){
-      alert('⛔ Key đã hết hạn! Vui lòng nhập key mới.');
-      logout();
-    }, 500);
-    return;
-  }
-  var d = Math.floor(left/86400000);
-  var h = Math.floor((left%86400000)/3600000);
-  var m = Math.floor((left%3600000)/60000);
-  var s = Math.floor((left%60000)/1000);
-  var str = '⏱ ';
-  if(d>0) str += d+'d ';
-  str += String(h).padStart(2,'0') + ':' + String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
-  t.textContent = str;
-  t.style.color = left<60000 ? '#ff5577' : '#00ff88';
-}
+    function stopMatrix() {
+        if (matrixInterval) {
+            clearInterval(matrixInterval);
+            matrixInterval = null;
+        }
+        canvas.classList.remove("show");
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
 
-function logout(){
-  clearInterval(timerInt);
-  currentExp = null;
-  for(var i=1;i<=9;i++){
-    state[i] = 0;
-    $('f'+i).classList.remove('on');
-  }
-  $('main').classList.remove('on');
-  $('login').classList.add('on');
-  $('k').value = '';
-  $('m1').className = 'msg';
-}
+    window.addEventListener("resize", function() {
+        if (matrixInterval) resizeCanvas();
+    });
 
-function pick(n){
-  state[n] = state[n] ? 0 : 1;
-  $('f'+n).classList.toggle('on', state[n] === 1);
-  var m = $('m2');
-  m.className = 'msg on ' + (state[n] ? 'ok' : 'er');
-  m.textContent = (state[n] ? '✅ Đã bật: ' : '⛔ Đã tắt: ') + NAME[n];
-  setTimeout(function(){ m.className = 'msg'; }, 1500);
-}
+    // HELPERS
+    function getEsp(key) {
+        for (var i = 0; i < tabData.esp.length; i++) {
+            if (tabData.esp[i].key === key) return tabData.esp[i].on;
+        }
+        return false;
+    }
+    function getAim(key) {
+        for (var i = 0; i < tabData.aim.length; i++) {
+            if (tabData.aim[i].key === key) return tabData.aim[i].on;
+        }
+        return false;
+    }
 
-function updateSlider(id, fillId, thumbId, valId, min, max){
-  var s = $(id), fill = $(fillId), thumb = $(thumbId), val = $(valId);
-  if(!s || !fill || !thumb || !val) return;
-  var pct = ((s.value - min) / (max - min)) * 100;
-  fill.style.width = pct + '%';
-  thumb.style.left = pct + '%';
-  val.textContent = s.value;
-}
-$('dpiSlider').addEventListener('input', function(){ updateSlider('dpiSlider','dpiFill','dpiThumb','dpiVal',100,800); });
-$('recSlider').addEventListener('input', function(){ updateSlider('recSlider','recFill','recThumb','recVal',0,100); });
+    function anyFeatureOn() {
+        var espOn = false;
+        var aimOn = false;
+        for (var i = 0; i < tabData.esp.length; i++) {
+            if (tabData.esp[i].on && tabData.esp[i].key !== "enableEsp") espOn = true;
+        }
+        for (var j = 0; j < tabData.aim.length; j++) {
+            if (tabData.aim[j].on) aimOn = true;
+        }
+        return espOn || aimOn;
+    }
 
-window.addEventListener('load', function(){
-  updateSlider('dpiSlider','dpiFill','dpiThumb','dpiVal',100,800);
-  updateSlider('recSlider','recFill','recThumb','recVal',0,100);
-  autoLogin();
-});
+    function updateEffects() {
+        document.getElementById("espBox1").classList.toggle("show", getEsp("playerBox"));
+        document.getElementById("espBox2").classList.toggle("show", getEsp("playerBox"));
+
+        document.getElementById("espHealth1").classList.toggle("show", getEsp("healthBar"));
+        document.getElementById("espHealth2").classList.toggle("show", getEsp("healthBar"));
+        document.getElementById("espHBg1").classList.toggle("show", getEsp("healthBar"));
+        document.getElementById("espHBg2").classList.toggle("show", getEsp("healthBar"));
+
+        document.getElementById("espName1").classList.toggle("show", getEsp("playerName"));
+        document.getElementById("espName2").classList.toggle("show", getEsp("playerName"));
+
+        document.getElementById("espDist1").classList.toggle("show", getEsp("distance"));
+        document.getElementById("espDist2").classList.toggle("show", getEsp("distance"));
+
+        document.getElementById("espSkeleton").classList.toggle("show", getEsp("skeleton"));
+        document.getElementById("espTracer").classList.toggle("show", getEsp("topTracer"));
+        document.getElementById("enemyCount").classList.toggle("show", getEsp("enemyCount"));
+
+        document.getElementById("aimCrosshair").classList.toggle("show", getAim("aimBot"));
+        document.getElementById("aimNeck").classList.toggle("show", getAim("aimNeck"));
+        document.getElementById("aimLock").classList.toggle("show", getAim("aimLock"));
+
+        if (anyFeatureOn()) {
+            startMatrix();
+        } else {
+            stopMatrix();
+        }
+    }
+
+    function renderTab(tab) {
+        currentTab = tab;
+        container.innerHTML = "";
+        var data = tabData[tab];
+
+        if (data === "music") {
+            var title = document.createElement("div");
+            title.className = "section-title";
+            title.textContent = "MUSIC";
+            container.appendChild(title);
+
+            for (var i = 0; i < musicList.length; i++) {
+                (function(index) {
+                    var div = document.createElement("div");
+                    div.className = "music-item" + (currentMusic === index ? " playing" : "");
+                    div.innerHTML =
+                        '<div class="music-icon">' + (currentMusic === index ? "||" : ">") + '</div>' +
+                        '<div class="music-name">' + musicList[index].name + '</div>';
+                    div.addEventListener("click", function() { toggleMusic(index); });
+                    container.appendChild(div);
+                })(i);
+            }
+            return;
+        }
+
+        for (var i = 0; i < data.length; i++) {
+            var div = document.createElement("div");
+            div.className = "feature";
+            div.innerHTML =
+                "<span>" + data[i].name + "</span>" +
+                '<div class="switch ' + (data[i].on ? "on" : "") + '" data-tab="' + tab + '" data-index="' + i + '"></div>';
+            container.appendChild(div);
+        }
+    }
+
+    container.addEventListener("click", function(e) {
+        if (e.target.classList.contains("switch")) {
+            var tab = e.target.dataset.tab;
+            var idx = e.target.dataset.index;
+            e.target.classList.toggle("on");
+            tabData[tab][idx].on = e.target.classList.contains("on");
+            updateEffects();
+        }
+    });
+
+    var tabs = document.querySelectorAll(".tab");
+    for (var i = 0; i < tabs.length; i++) {
+        tabs[i].addEventListener("click", function() {
+            var allTabs = document.querySelectorAll(".tab");
+            for (var j = 0; j < allTabs.length; j++) allTabs[j].classList.remove("active");
+            this.classList.add("active");
+            renderTab(this.dataset.tab);
+        });
+    }
+
+    function toggleMusic(index) {
+        if (currentMusic === index) {
+            audio.pause();
+            currentMusic = -1;
+        } else {
+            audio.src = musicList[index].url;
+            audio.loop = true;
+            audio.play().catch(function(e) { console.log("Khong phat duoc:", e); });
+            currentMusic = index;
+        }
+        renderTab("misc");
+    }
+
+    var menu = document.getElementById("menu");
+    function showMenu() { menu.classList.add("show"); }
+    function hideMenu() { menu.classList.remove("show"); }
+
+    var threeFingerCount = 0;
+    var resetTimer = null;
+
+    document.addEventListener("touchstart", function(e) {
+        if (e.touches.length === 3) {
+            threeFingerCount++;
+            clearTimeout(resetTimer);
+            if (threeFingerCount >= 3) {
+                if (menu.classList.contains("show")) hideMenu();
+                else showMenu();
+                threeFingerCount = 0;
+            } else {
+                resetTimer = setTimeout(function() { threeFingerCount = 0; }, 1000);
+            }
+        }
+    }, { passive: true });
+
+    document.addEventListener("keydown", function(e) {
+        if (e.key === "m" || e.key === "M") {
+            if (menu.classList.contains("show")) hideMenu();
+            else showMenu();
+        }
+    });
+
+    renderTab("esp");
+    updateEffects();
 </script>
 </body>
 </html>
