@@ -1,348 +1,249 @@
-<!-- ============ FILE 1: genkey.html ============ -->
 <!DOCTYPE html>
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<title>SAMM.NET - Key Generator</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SAMM CRACK - TAO KEY</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,-apple-system,sans-serif;-webkit-tap-highlight-color:transparent}
-body{background:#02040a;min-height:100vh;color:#fff;padding:18px}
-.bg{position:fixed;inset:0;z-index:-2;background:
-  radial-gradient(circle at 20% 15%,rgba(255,0,60,.25),transparent 45%),
-  radial-gradient(circle at 80% 40%,rgba(255,0,60,.18),transparent 45%),
-  radial-gradient(circle at 50% 100%,rgba(255,80,0,.12),transparent 50%),
-  linear-gradient(180deg,#0a0205,#100205 60%,#050001)}
-.bg::before{content:'';position:absolute;inset:0;background-image:
-  linear-gradient(rgba(255,0,60,.04) 1px,transparent 1px),
-  linear-gradient(90deg,rgba(255,0,60,.04) 1px,transparent 1px);
-  background-size:40px 40px;mask-image:radial-gradient(circle at 50% 30%,#000,transparent 75%)}
-
-.wrap{max-width:440px;margin:0 auto;position:relative;z-index:1}
-
-.hd{text-align:center;margin-bottom:20px}
-.hd h1{font-size:24px;font-weight:900;font-style:italic;letter-spacing:1px;background:linear-gradient(90deg,#fff 20%,#ff5577 80%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 0 14px rgba(255,0,60,.7))}
-.hd p{font-size:11px;color:#ff5577;letter-spacing:3px;margin-top:5px;text-transform:uppercase;font-weight:700}
-.hd .line{width:80px;height:2px;margin:12px auto 0;background:linear-gradient(90deg,transparent,#ff0040,transparent);box-shadow:0 0 12px #ff0040}
-
-.section{font-size:12px;color:#aab;letter-spacing:1.5px;margin-bottom:12px;text-transform:uppercase;font-weight:700;display:flex;align-items:center;gap:7px}
-.section::before{color:#ff0040;font-size:14px}
-.section.t1::before{content:'⏱'}
-.section.t2::before{content:'📱'}
-.section.t3::before{content:'🔑'}
-
-/* THỜI HẠN */
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px}
-.opt{background:rgba(30,5,15,.8);border:1.5px solid rgba(255,255,255,.08);border-radius:14px;padding:16px 12px;text-align:center;cursor:pointer;transition:.25s;position:relative;overflow:hidden}
-.opt:hover{transform:translateY(-2px)}
-.opt.sel{background:linear-gradient(135deg,rgba(255,0,60,.22),rgba(200,0,40,.15));border-color:#ff0040;box-shadow:0 0 25px rgba(255,0,60,.5)}
-.opt.sel::before{content:'✓';position:absolute;top:8px;right:10px;color:#00ff88;font-weight:900;font-size:14px;text-shadow:0 0 8px #00ff88}
-.opt .em{font-size:24px;margin-bottom:6px;display:block}
-.opt .tt{font-size:14px;font-weight:800;color:#fff}
-.opt.sel .tt{color:#ff5577;text-shadow:0 0 10px rgba(255,0,60,.7)}
-.opt .sub{font-size:10px;color:#667;margin-top:3px;letter-spacing:1px}
-
-/* SỐ LƯỢNG THIẾT BỊ */
-.dev-box{background:rgba(30,5,15,.8);border:1.5px solid rgba(255,0,60,.4);border-radius:14px;padding:16px;margin-bottom:20px}
-.dev-row{display:flex;align-items:center;gap:10px;margin-bottom:14px}
-.dev-row label{font-size:12px;color:#aab;font-weight:700;letter-spacing:.5px;white-space:nowrap}
-.dev-row .num-input{flex:1;background:rgba(0,0,0,.4);border:1.5px solid rgba(255,0,60,.4);border-radius:10px;padding:12px 14px;color:#fff;font-size:16px;font-weight:800;outline:none;text-align:center;letter-spacing:1px;transition:.2s}
-.dev-row .num-input:focus{border-color:#ff0040;box-shadow:0 0 15px rgba(255,0,60,.5)}
-.dev-row .unit{font-size:12px;color:#ff5577;font-weight:700;letter-spacing:.5px}
-
-/* Nút chọn nhanh */
-.quick{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
-.quick button{background:rgba(255,0,60,.12);border:1px solid rgba(255,0,60,.3);color:#ff8899;padding:8px 4px;border-radius:8px;font-size:10.5px;font-weight:800;cursor:pointer;transition:.2s;letter-spacing:.3px}
-.quick button:hover{background:rgba(255,0,60,.25);color:#fff}
-.quick button:active{transform:scale(.94)}
-
-.dev-info{margin-top:12px;padding:10px 12px;background:rgba(0,0,0,.35);border-radius:10px;font-size:11px;color:#aab;display:flex;justify-content:space-between;align-items:center}
-.dev-info b{color:#00ff88;font-size:13px;font-weight:900;text-shadow:0 0 8px rgba(0,255,120,.6)}
-
-/* SỐ LƯỢNG KEY */
-.key-count-box{background:rgba(30,5,15,.8);border:1.5px solid rgba(255,0,60,.4);border-radius:14px;padding:16px;margin-bottom:20px}
-.key-count-row{display:flex;align-items:center;gap:10px;margin-bottom:14px}
-.key-count-row label{font-size:12px;color:#aab;font-weight:700;letter-spacing:.5px;white-space:nowrap}
-.key-count-row .num-input{flex:1;background:rgba(0,0,0,.4);border:1.5px solid rgba(255,0,60,.4);border-radius:10px;padding:12px 14px;color:#fff;font-size:16px;font-weight:800;outline:none;text-align:center;letter-spacing:1px;transition:.2s}
-.key-count-row .num-input:focus{border-color:#ff0040;box-shadow:0 0 15px rgba(255,0,60,.5)}
-.key-count-row .unit{font-size:12px;color:#ff5577;font-weight:700;letter-spacing:.5px}
-.key-count-info{margin-top:12px;padding:10px 12px;background:rgba(0,0,0,.35);border-radius:10px;font-size:11px;color:#aab;display:flex;justify-content:space-between;align-items:center}
-.key-count-info b{color:#ff5577;font-size:13px;font-weight:900;text-shadow:0 0 8px rgba(255,0,60,.6)}
-
-/* NÚT TẠO */
-.btn{width:100%;padding:18px;background:#000;border:2px solid transparent;border-radius:14px;position:relative;cursor:pointer;font-size:15px;font-weight:900;letter-spacing:3px;color:#fff;text-transform:uppercase;margin-bottom:22px;overflow:hidden}
-.btn::before{content:'';position:absolute;inset:-2px;border-radius:14px;padding:2px;background:linear-gradient(135deg,#ff0040,#ff5500,#ff0040);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:bg 3s linear infinite}
-@keyframes bg{0%,100%{filter:hue-rotate(0deg) drop-shadow(0 0 10px rgba(255,0,60,.8))}50%{filter:hue-rotate(30deg) drop-shadow(0 0 18px rgba(255,80,0,.9))}}
-.btn:active{transform:scale(.98)}
-
-/* KẾT QUẢ */
-.result{background:linear-gradient(180deg,rgba(30,5,15,.9),rgba(15,2,10,.7));border:1.5px solid rgba(0,255,120,.4);border-radius:16px;padding:18px;margin-bottom:20px;display:none;box-shadow:0 0 30px rgba(0,255,120,.2)}
-.result.on{display:block;animation:fi .35s}
-@keyframes fi{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
-.result .hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-size:11px;color:#00ff88;font-weight:700;letter-spacing:1.5px;text-transform:uppercase}
-.result .hdr .dot{width:8px;height:8px;background:#00ff88;border-radius:50%;box-shadow:0 0 10px #00ff88;animation:blink 1.5s infinite}
-@keyframes blink{50%{opacity:.3}}
-.keys-list{display:flex;flex-direction:column;gap:8px;max-height:260px;overflow-y:auto;padding-right:4px}
-.keys-list::-webkit-scrollbar{width:4px}
-.keys-list::-webkit-scrollbar-thumb{background:rgba(255,0,60,.4);border-radius:4px}
-.key-item{background:rgba(0,0,0,.5);border:1px dashed rgba(0,255,120,.5);border-radius:10px;padding:12px;font-family:'Courier New',monospace;font-size:14px;letter-spacing:1.5px;color:#00ff88;text-align:center;font-weight:700;text-shadow:0 0 8px rgba(0,255,120,.6);cursor:pointer;transition:.2s;position:relative}
-.key-item:active{background:rgba(0,255,120,.1);transform:scale(.98)}
-.key-item .copy-tag{position:absolute;top:4px;right:8px;font-size:8px;color:#00ff88;opacity:.5;font-family:system-ui}
-.info{display:flex;justify-content:space-between;font-size:11px;color:#889;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05)}
-.info:last-child{border-bottom:0}
-.info b{color:#ff5577;font-weight:700}
-.copy-all{width:100%;padding:11px;background:rgba(0,255,120,.12);border:1px solid rgba(0,255,120,.4);border-radius:10px;color:#00ff88;font-weight:700;cursor:pointer;letter-spacing:1px;font-size:12px;margin-top:12px}
-.copy-all:active{transform:scale(.98);background:rgba(0,255,120,.25)}
-
-/* DANH SÁCH KEY ĐÃ TẠO */
-.list-title{font-size:12px;color:#aab;letter-spacing:1.5px;margin-bottom:10px;text-transform:uppercase;font-weight:700;display:flex;justify-content:space-between;align-items:center}
-.list-title span::before{content:'📋 ';margin-right:5px}
-.clear{background:rgba(255,0,60,.15);border:1px solid rgba(255,0,60,.4);color:#ff5577;padding:4px 10px;border-radius:6px;font-size:10px;cursor:pointer;font-weight:700}
-.history{display:flex;flex-direction:column;gap:8px;margin-bottom:20px}
-.hitem{background:rgba(30,10,20,.7);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:11px 13px}
-.hitem .row1{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:5px}
-.hitem .k{font-family:'Courier New',monospace;font-size:11px;color:#ff8899;letter-spacing:1px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;font-weight:700}
-.hitem .t{font-size:9px;color:#ff5577;background:rgba(255,0,60,.15);border:1px solid rgba(255,0,60,.3);padding:3px 7px;border-radius:6px;font-weight:700;flex-shrink:0}
-.hitem .t.vv{color:#00ff88;background:rgba(0,255,120,.15);border-color:rgba(0,255,120,.3)}
-.hitem .row2{font-size:10px;color:#667;display:flex;gap:10px}
-.hitem .row2 b{color:#aab}
-
-.empty{text-align:center;color:#556;font-size:12px;padding:20px;font-style:italic}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#0a0000;background-image:radial-gradient(circle at 50% 0%,#7a0000 0%,#3a0000 30%,#150000 60%,#000 100%);display:flex;justify-content:center;align-items:center;min-height:100vh;padding:20px}
+.box{width:560px;max-width:100%;padding:36px 32px;background:linear-gradient(160deg,#5a0000 0%,#2a0000 40%,#1a0000 70%,#3a0000 100%);border-radius:26px;border:2px solid #ff0033;box-shadow:0 0 35px #ff0033,0 0 80px #ff0033aa,inset 0 0 70px #ff003340;position:relative}
+h2{color:#fff;text-align:center;letter-spacing:8px;font-size:28px;font-weight:900;margin-bottom:6px;text-shadow:0 0 14px #ff0033,0 0 28px #ff0033}
+.sub{color:#ff5566;text-align:center;font-size:10px;letter-spacing:6px;margin-bottom:20px;font-weight:700}
+.divider{height:2px;margin:18px 0;background:linear-gradient(90deg,transparent,#ff6688,#ff0033,#ff6688,transparent);box-shadow:0 0 14px #ff0033}
+label{display:block;color:#ff8888;font-size:11px;letter-spacing:3px;font-weight:800;margin-bottom:8px;margin-top:12px}
+.inp{width:100%;padding:15px 18px;font-size:15px;letter-spacing:2px;background:#0a0000;border:2px solid #ff003366;border-radius:12px;color:#ff3366;font-weight:700;outline:none;transition:.3s;box-shadow:inset 0 3px 10px rgba(0,0,0,0.8)}
+.inp:focus{border-color:#ff3366;color:#fff;box-shadow:0 0 22px #ff0033}
+select.inp{cursor:pointer}
+select.inp option{background:#1a0000;color:#ff3366}
+.row{display:flex;gap:10px}
+.row .inp{flex:1}
+.btn{width:100%;padding:17px;font-size:15px;font-weight:900;letter-spacing:5px;color:#fff;border:2px solid #ff8899;border-radius:12px;cursor:pointer;background:linear-gradient(180deg,#ff3366 0%,#ff0033 50%,#990020 100%);box-shadow:0 0 28px #ff0033;transition:.25s;margin-top:20px}
+.btn:hover{transform:translateY(-2px);box-shadow:0 0 40px #ff0033}
+#result{display:none;margin-top:20px;padding:22px;background:linear-gradient(180deg,#3a0000,#1a0000);border:2px solid #ff3366;border-radius:16px;box-shadow:0 0 30px #ff0033}
+#result.show{display:block}
+#keyOut{font-size:22px;font-weight:900;letter-spacing:3px;text-align:center;color:#fff;padding:20px;border-radius:12px;margin-bottom:14px;background:#0a0000;border:2px dashed #ff3366;text-shadow:0 0 20px #ff0033;user-select:all;font-family:monospace;word-break:break-all}
+.mini{display:flex;gap:10px}
+.mini button{flex:1;padding:12px;font-size:12px;font-weight:900;letter-spacing:3px;border-radius:10px;cursor:pointer;border:2px solid}
+.copy{color:#00e0ff;border-color:#00e0ff;background:rgba(0,224,255,0.2)}
+.copy:hover{background:#00e0ff;color:#001a22}
+.clear{color:#ff5566;border-color:#ff5566;background:rgba(255,85,102,0.2)}
+.clear:hover{background:#ff5566;color:#1a0000}
+.stat{margin-top:14px;text-align:center;color:#ff5566;font-size:11px;letter-spacing:2px}
+.stat b{color:#00ff88}
+.list{margin-top:14px;padding:12px;background:#0a0000;border-radius:10px;border:1px solid #ff003333;max-height:200px;overflow-y:auto}
+.list h4{color:#ff5566;font-size:10px;letter-spacing:3px;text-align:center;margin-bottom:8px}
+.item{display:flex;justify-content:space-between;padding:8px 12px;margin-bottom:5px;background:#1a0000;border-radius:6px;font-size:11px;color:#ff8888;font-family:monospace;border:1px solid #ff003322;flex-wrap:wrap;gap:4px}
+.item b{color:#fff;letter-spacing:1px}
+.item span{color:#ff5566;font-size:10px}
+#customTime{display:none}
+#customTime.show{display:block}
 </style>
 </head>
 <body>
-<div class="bg"></div>
-<div class="wrap">
-  <div class="hd">
-    <h1>SAMM.NET</h1>
-    <p>KEY GENERATOR</p>
-    <div class="line"></div>
+<div class="box">
+  <h2>KEY GENERATOR</h2>
+  <p class="sub">SAMM CRACK</p>
+  <div class="divider"></div>
+
+  <label>TEN KHACH</label>
+  <input class="inp" id="customer" placeholder="VD: NGUYEN VAN A" maxlength="15">
+
+  <label>LOAI KEY</label>
+  <select class="inp" id="duration" onchange="checkType()">
+    <option value="hour">THEO GIO</option>
+    <option value="day" selected>THEO NGAY</option>
+    <option value="week">THEO TUAN</option>
+    <option value="month">THEO THANG</option>
+    <option value="year">THEO NAM</option>
+    <option value="forever">VINH VIEN</option>
+    <option value="custom">TUY CHINH GIO</option>
+  </select>
+
+  <div id="amountBox">
+    <label>SO LUONG</label>
+    <input class="inp" id="amount" type="number" value="1" min="1" max="9999">
   </div>
 
-  <!-- THỜI HẠN -->
-  <div class="section t1">Chọn thời hạn key</div>
-  <div class="grid" id="grid">
-    <div class="opt" data-d="1" onclick="sel(this)"><span class="em">⏱️</span><div class="tt">1 PHÚT</div><div class="sub">60s</div></div>
-    <div class="opt" data-d="2" onclick="sel(this)"><span class="em">⏱️</span><div class="tt">2 PHÚT</div><div class="sub">120s</div></div>
-    <div class="opt" data-d="10" onclick="sel(this)"><span class="em">⏱️</span><div class="tt">10 PHÚT</div><div class="sub">600s</div></div>
-    <div class="opt" data-d="1440" onclick="sel(this)"><span class="em">🕐</span><div class="tt">24 GIỜ</div><div class="sub">1 ngày</div></div>
-    <div class="opt" data-d="10080" onclick="sel(this)"><span class="em">📅</span><div class="tt">1 TUẦN</div><div class="sub">7 ngày</div></div>
-    <div class="opt" data-d="43200" onclick="sel(this)"><span class="em">📆</span><div class="tt">1 THÁNG</div><div class="sub">30 ngày</div></div>
-    <div class="opt" data-d="0" onclick="sel(this)" style="grid-column:span 2"><span class="em">💎</span><div class="tt">VĨNH VIỄN</div><div class="sub">Không giới hạn</div></div>
-  </div>
-
-  <!-- SỐ LƯỢNG THIẾT BỊ -->
-  <div class="section t2">Số lượng thiết bị cho phép</div>
-  <div class="dev-box">
-    <div class="dev-row">
-      <label>📱 Số thiết bị:</label>
-      <input type="number" class="num-input" id="devCount" value="1" min="1" max="999999" oninput="updateDevInfo()">
-      <span class="unit">thiết bị</span>
-    </div>
-    <div class="quick">
-      <button onclick="setDev(1)">1</button>
-      <button onclick="setDev(2)">2</button>
-      <button onclick="setDev(5)">5</button>
-      <button onclick="setDev(10)">10</button>
-      <button onclick="setDev(50)">50</button>
-      <button onclick="setDev(100)">100</button>
-      <button onclick="setDev(500)">500</button>
-      <button onclick="setDev(1000)">1K</button>
-      <button onclick="setDev(10000)">10K</button>
-      <button onclick="setDev(100000)">100K</button>
-    </div>
-    <div class="dev-info">
-      <span>🔓 Key dùng được trên</span>
-      <b id="devPreview">1 thiết bị</b>
+  <div id="customTime">
+    <label>CHON NGAY HET HAN</label>
+    <input class="inp" id="customDate" type="date">
+    <label>CHON GIO HET HAN (24H)</label>
+    <div class="row">
+      <input class="inp" id="customHour" type="number" placeholder="GIO (0-23)" min="0" max="23" value="23">
+      <input class="inp" id="customMin" type="number" placeholder="PHUT (0-59)" min="0" max="59" value="59">
     </div>
   </div>
 
-  <!-- SỐ LƯỢNG KEY -->
-  <div class="section t3">Số lượng key cần tạo</div>
-  <div class="key-count-box">
-    <div class="key-count-row">
-      <label>🔑 Số key:</label>
-      <input type="number" class="num-input" id="keyCount" value="1" min="1" max="500" oninput="updateKeyInfo()">
-      <span class="unit">key</span>
-    </div>
-    <div class="quick">
-      <button onclick="setKeyCount(1)">1</button>
-      <button onclick="setKeyCount(5)">5</button>
-      <button onclick="setKeyCount(10)">10</button>
-      <button onclick="setKeyCount(20)">20</button>
-      <button onclick="setKeyCount(50)">50</button>
-      <button onclick="setKeyCount(100)">100</button>
-      <button onclick="setKeyCount(200)">200</button>
-      <button onclick="setKeyCount(300)">300</button>
-      <button onclick="setKeyCount(400)">400</button>
-      <button onclick="setKeyCount(500)">500</button>
-    </div>
-    <div class="key-count-info">
-      <span>📦 Sẽ tạo</span>
-      <b id="keyPreview">1 key</b>
+  <button class="btn" onclick="genKey()">TAO KEY</button>
+
+  <div id="result">
+    <div id="keyOut">-</div>
+    <div class="mini">
+      <button class="copy" onclick="copyKey()">COPY</button>
+      <button class="clear" onclick="reset()">XOA</button>
     </div>
   </div>
 
-  <button class="btn" onclick="gen()">🔑 TẠO KEY</button>
+  <div class="stat">TONG KEY DA TAO: <b id="count">0</b></div>
 
-  <!-- KẾT QUẢ -->
-  <div class="result" id="res">
-    <div class="hdr"><span>✅ ĐÃ TẠO KEY</span><span class="dot"></span></div>
-    <div class="keys-list" id="keysList"></div>
-    <div style="margin-top:12px">
-      <div class="info"><span>⏱ Thời hạn</span><b id="rd">-</b></div>
-      <div class="info"><span>📱 Số thiết bị/key</span><b id="rDev">-</b></div>
-      <div class="info"><span>🔢 Tổng số key</span><b id="rCount">-</b></div>
-      <div class="info"><span>📅 Hết hạn lúc</span><b id="re">-</b></div>
-    </div>
-    <button class="copy-all" onclick="copyAll()">📋 SAO CHÉP TẤT CẢ</button>
+  <div class="list">
+    <h4>DANH SACH KEY DA TAO</h4>
+    <div id="listContent"></div>
   </div>
-
-  <!-- LỊCH SỬ -->
-  <div class="list-title">
-    <span>Lịch sử key</span>
-    <button class="clear" onclick="clearAll()">XÓA HẾT</button>
-  </div>
-  <div class="history" id="hist"><div class="empty">Chưa có key nào</div></div>
 </div>
 
 <script>
-const $=id=>document.getElementById(id);
-let selected=null;
-let lastCreated=[];
+var currentKey = "";
 
-const LABEL={1:"1 PHÚT",2:"2 PHÚT",10:"10 PHÚT",1440:"24 GIỜ",10080:"1 TUẦN",43200:"1 THÁNG",0:"VĨNH VIỄN"};
-
-function sel(el){
-  document.querySelectorAll('.opt').forEach(o=>o.classList.remove('sel'));
-  el.classList.add('sel');
-  selected=parseInt(el.dataset.d);
+function rand4(){
+  var chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+  var s = "";
+  for(var i = 0; i < 4; i++){
+    s += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return s;
 }
 
-// ===== THIẾT BỊ =====
-function setDev(n){ $('devCount').value=n; updateDevInfo(); }
-function updateDevInfo(){
-  const n = parseInt($('devCount').value) || 1;
-  $('devPreview').textContent = n.toLocaleString('vi-VN') + ' thiết bị';
+function makeKey(){
+  return rand4() + "-" + rand4() + "-" + rand4();
 }
 
-// ===== SỐ KEY =====
-function setKeyCount(n){ $('keyCount').value=n; updateKeyInfo(); }
-function updateKeyInfo(){
-  const n = parseInt($('keyCount').value) || 1;
-  $('keyPreview').textContent = n.toLocaleString('vi-VN') + ' key';
+function pad(n){
+  if(n < 10) return "0" + n;
+  return "" + n;
 }
 
-// ===== TẠO KEY =====
+function checkType(){
+  var t = document.getElementById("duration").value;
+  var ct = document.getElementById("customTime");
+  var ab = document.getElementById("amountBox");
+  if(t === "custom"){
+    ct.classList.add("show");
+    ab.style.display = "none";
+  } else if(t === "forever"){
+    ct.classList.remove("show");
+    ab.style.display = "none";
+  } else {
+    ct.classList.remove("show");
+    ab.style.display = "block";
+  }
+}
+
 function genKey(){
-  const chars="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-  let s="";
-  for(let i=0;i<9;i++){
-    s+=chars[Math.floor(Math.random()*chars.length)];
-    if(i===2||i===5) s+="-";
+  var cust = document.getElementById("customer").value.trim().toUpperCase();
+  if(cust === "") cust = "USER";
+  var type = document.getElementById("duration").value;
+  var amount = parseInt(document.getElementById("amount").value) || 1;
+
+  var now = Date.now();
+  var exp = 0;
+  var label = "";
+
+  if(type === "forever"){
+    exp = 0;
+    label = "VINH VIEN";
+  } else if(type === "custom"){
+    var d = document.getElementById("customDate").value;
+    var h = parseInt(document.getElementById("customHour").value) || 0;
+    var m = parseInt(document.getElementById("customMin").value) || 0;
+    if(!d){
+      alert("VUI LONG CHON NGAY!");
+      return;
+    }
+    var parts = d.split("-");
+    var dt = new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]), h, m, 0);
+    exp = dt.getTime();
+    label = pad(dt.getDate()) + "/" + pad(dt.getMonth() + 1) + "/" + dt.getFullYear() + " " + pad(h) + ":" + pad(m);
+  } else {
+    var ms = 0;
+    if(type === "hour")  ms = amount * 3600000;
+    if(type === "day")   ms = amount * 86400000;
+    if(type === "week")  ms = amount * 7 * 86400000;
+    if(type === "month") ms = amount * 30 * 86400000;
+    if(type === "year")  ms = amount * 365 * 86400000;
+    exp = now + ms;
+    var labelMap = {hour:"GIO", day:"NGAY", week:"TUAN", month:"THANG", year:"NAM"};
+    label = amount + " " + labelMap[type];
   }
-  return "VTP-"+s;
-}
 
-function gen(){
-  if(selected===null){ alert('⚠️ Chọn thời hạn trước!'); return; }
-  const devCount = parseInt($('devCount').value) || 1;
-  const keyCount = parseInt($('keyCount').value) || 1;
-
-  if(devCount < 1){ alert('⚠️ Số thiết bị phải >= 1'); return; }
-  if(keyCount < 1){ alert('⚠️ Số key phải >= 1'); return; }
-  if(keyCount > 500){ alert('⚠️ Tối đa 500 key/lần'); return; }
-
-  const now = Date.now();
-  const exp = selected===0 ? null : now + selected*60*1000;
-
-  // Tạo danh sách key
-  const newKeys = [];
-  for(let i=0;i<keyCount;i++){
-    newKeys.push({
-      key: genKey(),
-      dur: selected,
-      exp: exp,
-      devices: devCount,
-      maxDevices: devCount,
-      time: now
-    });
+  var arr = JSON.parse(localStorage.getItem("samm_keys") || "[]");
+  var key = "";
+  var tries = 0;
+  var duplicate = true;
+  while(duplicate && tries < 100){
+    key = makeKey();
+    duplicate = false;
+    for(var i = 0; i < arr.length; i++){
+      if(arr[i].key === key){
+        duplicate = true;
+        break;
+      }
+    }
+    tries++;
   }
 
-  // Lưu vào localStorage
-  const list=JSON.parse(localStorage.sammKeys||'[]');
-  newKeys.forEach(k => list.unshift(k));
-  localStorage.sammKeys = JSON.stringify(list.slice(0, 500));
+  currentKey = key;
 
-  // Hiển thị kết quả
-  lastCreated = newKeys;
-  $('keysList').innerHTML = newKeys.map((k,i)=>`
-    <div class="key-item" onclick="copyOne(${i})">
-      <span class="copy-tag">tap copy</span>
-      ${k.key}
-    </div>
-  `).join('');
-  $('rd').textContent = LABEL[selected];
-  $('rDev').textContent = devCount.toLocaleString('vi-VN') + ' thiết bị';
-  $('rCount').textContent = keyCount.toLocaleString('vi-VN') + ' key';
-  $('re').textContent = exp ? new Date(exp).toLocaleString('vi-VN') : '♾️ Không hết hạn';
-  $('res').classList.add('on');
+  arr.push({
+    key: key,
+    cust: cust,
+    exp: exp,
+    label: label,
+    time: now
+  });
+  localStorage.setItem("samm_keys", JSON.stringify(arr));
 
-  render();
-  $('res').scrollIntoView({behavior:'smooth', block:'start'});
+  document.getElementById("keyOut").textContent = key;
+  document.getElementById("result").classList.add("show");
+  updateCount();
+  renderList();
 }
 
-function copyOne(i){
-  const k = lastCreated[i].key;
-  navigator.clipboard.writeText(k).then(()=>{
-    const el = event.target.closest('.key-item');
-    const old = el.innerHTML;
-    el.innerHTML = '✅ ĐÃ COPY!';
-    setTimeout(()=>{ el.innerHTML = old; }, 800);
-  }).catch(()=>alert('Key: '+k));
+function copyKey(){
+  if(!currentKey) return;
+  var ta = document.createElement("textarea");
+  ta.value = currentKey;
+  document.body.appendChild(ta);
+  ta.select();
+  try {
+    document.execCommand("copy");
+    alert("DA COPY KEY: " + currentKey);
+  } catch(e){
+    alert("COPY THAT BAI - HAY COPY THU CONG");
+  }
+  document.body.removeChild(ta);
 }
 
-function copyAll(){
-  const txt = lastCreated.map(k=>k.key).join('\n');
-  navigator.clipboard.writeText(txt).then(()=>{
-    const b=event.target; const old=b.textContent;
-    b.textContent = '✅ ĐÃ COPY ' + lastCreated.length + ' KEY!';
-    setTimeout(()=>b.textContent=old, 1500);
-  }).catch(()=>alert(txt));
+function reset(){
+  currentKey = "";
+  document.getElementById("result").classList.remove("show");
+  document.getElementById("customer").value = "";
 }
 
-function render(){
-  const list=JSON.parse(localStorage.sammKeys||'[]');
-  const h=$('hist');
-  if(!list.length){ h.innerHTML='<div class="empty">Chưa có key nào</div>'; return; }
-  const now=Date.now();
-  h.innerHTML=list.slice(0,30).map(it=>{
-    const expired = it.exp && it.exp<now;
-    const label = it.dur===0 ? 'VĨNH VIỄN' : LABEL[it.dur];
-    return `<div class="hitem">
-      <div class="row1">
-        <div class="k">${it.key}</div>
-        <div class="t ${it.dur===0?'vv':''}">${expired?'HẾT HẠN':label}</div>
-      </div>
-      <div class="row2">
-        <span>📱 <b>${(it.devices||1).toLocaleString('vi-VN')}</b> thiết bị</span>
-        <span>📅 <b>${it.exp ? new Date(it.exp).toLocaleDateString('vi-VN') : '∞'}</b></span>
-      </div>
-    </div>`;
-  }).join('');
+function updateCount(){
+  var arr = JSON.parse(localStorage.getItem("samm_keys") || "[]");
+  document.getElementById("count").textContent = arr.length;
 }
 
-function clearAll(){
-  if(!confirm('Xóa toàn bộ lịch sử key?')) return;
-  localStorage.removeItem('sammKeys');
-  $('res').classList.remove('on');
-  render();
+function renderList(){
+  var arr = JSON.parse(localStorage.getItem("samm_keys") || "[]");
+  var content = document.getElementById("listContent");
+  if(arr.length === 0){
+    content.innerHTML = '<div style="text-align:center;color:#ff556688;font-size:11px">CHUA CO KEY NAO</div>';
+    return;
+  }
+  var html = "";
+  for(var i = arr.length - 1; i >= 0; i--){
+    var it = arr[i];
+    html += '<div class="item"><b>' + it.key + '</b><span>' + it.cust + ' - ' + it.label + '</span></div>';
+  }
+  content.innerHTML = html;
 }
 
-// Khởi tạo
-updateDevInfo();
-updateKeyInfo();
-render();
+checkType();
+updateCount();
+renderList();
 </script>
 </body>
 </html>
