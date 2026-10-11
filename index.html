@@ -2,691 +2,593 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<title>SAMM VIP</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SAMM CRACK</title>
 <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-    html, body {
-        width: 100%; height: 100%;
-        background: #000;
-        overflow: hidden;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-        user-select: none;
-        -webkit-user-select: none;
-    }
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#0a0000;background-image:radial-gradient(circle at 50% 0%,#7a0000 0%,#3a0000 30%,#150000 60%,#000 100%);display:flex;justify-content:center;align-items:center;min-height:100vh;padding:20px;overflow-x:hidden}
+.box{width:450px;max-width:100%;padding:38px 34px;background:linear-gradient(160deg,#5a0000 0%,#2a0000 40%,#1a0000 70%,#3a0000 100%);border-radius:26px;border:2px solid #ff0033;box-shadow:0 0 35px #ff0033,0 0 80px #ff0033aa,inset 0 0 70px #ff003340;position:relative;z-index:2}
+.logo{width:130px;height:130px;margin:0 auto 14px;border-radius:24px;overflow:hidden;position:relative;border:2px solid #ff3366;box-shadow:0 0 20px #ff0033,0 0 45px #ff0033aa;animation:logoPulse 2s ease-in-out infinite}
+@keyframes logoPulse{0%,100%{box-shadow:0 0 20px #ff0033,0 0 45px #ff0033aa}50%{box-shadow:0 0 30px #ff3366,0 0 60px #ff0033cc}}
+.logo img{width:100%;height:100%;object-fit:cover;display:block;cursor:pointer}
+h2{color:#fff;text-align:center;letter-spacing:10px;font-size:28px;font-weight:900;margin-bottom:6px;text-shadow:0 0 14px #ff0033,0 0 28px #ff0033}
+.sub{color:#ff5566;text-align:center;font-size:11px;letter-spacing:7px;margin-bottom:22px;font-weight:700}
+.divider{height:2px;margin:20px 0;background:linear-gradient(90deg,transparent,#ff6688,#ff0033,#ff6688,transparent);box-shadow:0 0 14px #ff0033}
+.key-wrap input{width:100%;padding:20px 15px;font-size:18px;letter-spacing:3px;background:#0a0000;border:2px solid #ff003366;border-radius:14px;color:#ff3366;text-align:center;font-weight:900;outline:none;transition:.3s;text-transform:uppercase;box-shadow:inset 0 3px 10px rgba(0,0,0,0.8);font-family:monospace}
+.key-wrap input::placeholder{color:#ff003366;letter-spacing:2px;font-size:13px;font-family:Arial;font-weight:700}
+.key-wrap input:focus{border-color:#ff3366;box-shadow:0 0 25px #ff0033;color:#fff;text-shadow:0 0 15px #ff0033}
+.btn{width:100%;padding:18px;font-size:16px;font-weight:900;letter-spacing:6px;color:#fff;border:2px solid #ff8899;border-radius:14px;cursor:pointer;background:linear-gradient(180deg,#ff3366 0%,#ff0033 50%,#990020 100%);box-shadow:0 0 28px #ff0033;transition:.25s;margin-top:16px}
+.btn:hover{transform:translateY(-2px);box-shadow:0 0 40px #ff0033}
+#msg{text-align:center;font-size:13px;letter-spacing:2px;font-weight:800;margin-top:14px;min-height:18px;line-height:1.4}
+#msg.err{color:#ff0033;text-shadow:0 0 14px #ff0033}
+#msg.ok{color:#00ff88;text-shadow:0 0 14px #00ff88}
+.contact{text-align:center;margin-top:20px;font-size:12px;letter-spacing:3px;color:#ff5566;font-weight:800}
+.contact a{display:inline-block;margin-top:12px;padding:14px 34px;color:#00e0ff;text-decoration:none;font-weight:900;letter-spacing:5px;font-size:14px;border:2px solid #00e0ff;border-radius:12px;background:rgba(0,224,255,0.2);box-shadow:0 0 18px #00e0ff88;transition:.3s;cursor:pointer}
+.contact a:hover{background:#00e0ff;color:#001a22}
 
-    /* ===== MATRIX RAIN ===== */
-    .matrix-canvas {
-        position: fixed; inset: 0;
-        z-index: 50;
-        pointer-events: none;
-        opacity: 0;
-        transition: opacity 0.4s;
-    }
-    .matrix-canvas.show { opacity: 0.75; }
+/* THÔNG BÁO ADMIN SAMM */
+#adminNotify{position:fixed;top:20px;left:50%;transform:translateX(-50%) translateY(-200%);z-index:9999;padding:18px 22px;max-width:420px;width:calc(100% - 40px);background:linear-gradient(180deg,#3a0000,#1a0000);border:2px solid #ff0033;border-radius:16px;box-shadow:0 0 30px #ff0033,0 0 60px #ff0033aa;transition:transform .4s ease}
+#adminNotify.show{transform:translateX(-50%) translateY(0)}
+#adminNotify .admin-head{display:flex;align-items:center;gap:8px;color:#ff0033;font-size:11px;font-weight:900;letter-spacing:3px;margin-bottom:10px;text-shadow:0 0 10px #ff0033}
+#adminNotify .admin-head:before{content:"ADMIN";background:#ff0033;color:#fff;padding:3px 8px;border-radius:6px;font-size:9px;letter-spacing:2px;box-shadow:0 0 12px #ff0033}
+#adminNotify .admin-body{color:#ffcccc;font-size:12.5px;line-height:1.6;letter-spacing:0.5px;font-weight:600}
+#adminNotify .admin-body b{color:#fff;text-shadow:0 0 8px #ff0033}
+#adminNotify .admin-body .em{color:#ffaa00;text-shadow:0 0 10px #ffaa00;font-weight:900}
 
-    /* ===== ESP ===== */
-    .esp-layer {
-        position: fixed; inset: 0;
-        pointer-events: none;
-        z-index: 100;
-    }
-    .esp-box {
-        position: absolute;
-        border: 2px solid #00FF41;
-        border-radius: 4px;
-        box-shadow: 0 0 12px rgba(0,255,65,0.8), inset 0 0 20px rgba(0,255,65,0.1);
-        display: none;
-        animation: boxPulse 2s infinite;
-    }
-    .esp-box.show { display: block; }
-    @keyframes boxPulse {
-        0%,100% { box-shadow: 0 0 12px rgba(0,255,65,0.8), inset 0 0 20px rgba(0,255,65,0.1); }
-        50% { box-shadow: 0 0 20px rgba(0,255,65,1), inset 0 0 30px rgba(0,255,65,0.2); }
-    }
+#verify{display:none}
+#verify.show{display:block}
+.verify-title{color:#ff5566;text-align:center;font-size:12px;letter-spacing:5px;font-weight:900;margin-bottom:8px}
+.verify-sub{color:#ff8888;text-align:center;font-size:10px;letter-spacing:3px;margin-bottom:20px}
+.game-btn{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;margin-bottom:14px;cursor:pointer;user-select:none;background:linear-gradient(180deg,#2a0000,#1a0000);border:2px solid #ff003366;border-radius:16px;color:#ff8888;font-size:16px;font-weight:900;letter-spacing:2px;transition:.3s}
+.game-btn:hover{border-color:#ff3366;box-shadow:0 0 25px #ff003388;transform:translateY(-2px)}
+.game-btn.on{color:#fff;border-color:#ff3366;background:linear-gradient(180deg,#ff0033,#7a0018);text-shadow:0 0 14px #fff;box-shadow:0 0 30px #ff0033}
+.game-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:900;background:linear-gradient(180deg,#ff0033,#7a0018);color:#fff;border:2px solid #ff8899;box-shadow:0 0 15px #ff0033;flex-shrink:0;margin-right:14px}
+.game-btn.on .game-icon{background:linear-gradient(180deg,#fff,#ff0033);border-color:#fff}
+.game-text{flex:1;text-align:left;line-height:1.3}
+.game-text b{display:block;font-size:15px}
+.game-text small{display:block;font-size:10px;letter-spacing:1.5px;color:#ff556688;font-weight:600;margin-top:3px}
+.game-btn.on .game-text small{color:#ffcccc}
+.game-check{width:26px;height:26px;border-radius:50%;border:2px solid #ff003366;background:#0a0000;display:flex;align-items:center;justify-content:center;font-size:14px;color:transparent;transition:.3s;flex-shrink:0}
+.game-btn.on .game-check{background:#00ff88;border-color:#fff;color:#001a22;font-weight:900;box-shadow:0 0 15px #00ff88}
+.verify-btn{width:100%;padding:18px;font-size:16px;font-weight:900;letter-spacing:6px;color:#fff;border:2px solid #ff8899;border-radius:14px;cursor:pointer;background:linear-gradient(180deg,#ff3366 0%,#ff0033 50%,#990020 100%);box-shadow:0 0 28px #ff0033;margin-top:10px}
+.verify-btn:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 0 40px #ff0033}
+.verify-btn:disabled{opacity:0.4;cursor:not-allowed;filter:grayscale(0.5)}
 
-    .esp-name {
-        position: absolute;
-        font-size: 11px;
-        color: #00FF41;
-        font-family: "Courier New", monospace;
-        font-weight: bold;
-        text-shadow: 0 0 6px #00FF41, 0 0 2px #000;
-        white-space: nowrap;
-        display: none;
-    }
-    .esp-name.show { display: block; }
-    .esp-name::before {
-        content: "> ";
-        color: #00FF41;
-    }
+#device{display:none}
+#device.show{display:block}
+.device-title{color:#ff5566;text-align:center;font-size:13px;letter-spacing:5px;font-weight:900;margin-bottom:6px}
+.device-sub{color:#ff8888;text-align:center;font-size:10px;letter-spacing:3px;margin-bottom:22px}
+.device-circle{width:180px;height:180px;margin:0 auto 20px;position:relative;display:flex;align-items:center;justify-content:center}
+.device-circle svg{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg)}
+.device-circle .track{fill:none;stroke:#2a0000;stroke-width:8}
+.device-circle .progress{fill:none;stroke:url(#grad);stroke-width:8;stroke-linecap:round;stroke-dasharray:502;stroke-dashoffset:502;transition:stroke-dashoffset 0.15s linear}
+.device-num{font-size:42px;font-weight:900;color:#fff;font-family:monospace;text-shadow:0 0 20px #ff0033,0 0 40px #ff003388;z-index:2}
+.device-num small{font-size:20px;color:#ff5566}
+.device-bar{width:100%;height:20px;background:#0a0000;border:2px solid #ff003366;border-radius:12px;overflow:hidden;margin-bottom:14px;box-shadow:inset 0 3px 10px rgba(0,0,0,0.8)}
+.device-bar-fill{height:100%;width:0%;background:linear-gradient(90deg,#990020,#ff0033,#ff6688,#ff0033);box-shadow:0 0 20px #ff0033;transition:width 0.15s linear;border-radius:10px}
+.device-status{text-align:center;font-size:12px;letter-spacing:2px;font-weight:800;color:#ffaa00;min-height:20px;margin-bottom:14px}
+.device-status.done{color:#00ff88;text-shadow:0 0 12px #00ff88}
+.device-log{background:#0a0000;border:1px solid #ff003333;border-radius:10px;padding:12px;max-height:120px;overflow-y:auto;font-family:monospace;font-size:10px;line-height:1.6;color:#ff8888}
+.device-log div{padding:2px 0}
+.device-log div.ok{color:#00ff88}
 
-    .esp-health {
-        position: absolute;
-        width: 4px;
-        background: linear-gradient(to bottom, #00FF41, #00AA22);
-        border-radius: 2px;
-        display: none;
-        box-shadow: 0 0 8px #00FF41;
-    }
-    .esp-health.show { display: block; }
+#menu{display:none}
+#menu.show{display:block}
+.r{display:flex;justify-content:space-between;align-items:center;padding:15px 18px;margin-bottom:10px;cursor:pointer;user-select:none;background:linear-gradient(180deg,#2a0000,#1a0000);border:1px solid #ff003366;border-radius:14px;color:#ff8888;font-size:14px;font-weight:800;letter-spacing:1.5px;transition:.3s}
+.r:hover{border-color:#ff3366;box-shadow:0 0 20px #ff003388}
+.r.on{color:#fff;border-color:#ff3366;background:linear-gradient(180deg,#ff0033,#7a0018);text-shadow:0 0 14px #fff;box-shadow:0 0 28px #ff0033}
+.dot{width:12px;height:12px;border-radius:50%;background:#ff003344;border:1px solid #ff003366;margin-right:11px;transition:.3s;flex-shrink:0}
+.r.on .dot{background:#00ff88;box-shadow:0 0 14px #00ff88;border-color:#fff}
+.r span{flex:1}
+.badge{font-size:10px;padding:4px 10px;border-radius:12px;background:#ff003322;border:1px solid #ff003355;color:#ff0033aa;letter-spacing:1.5px;transition:.3s;font-weight:900}
+.r.on .badge{background:linear-gradient(180deg,#fff,#ff0033);border-color:#fff;color:#fff;box-shadow:0 0 18px #ff0033}
+#keyInfo{text-align:center;font-size:11px;letter-spacing:2px;color:#ff5566;margin-top:10px;padding:10px;background:#1a0000;border-radius:8px;border:1px solid #ff003333;font-weight:700}
+#keyInfo b{color:#00ff88;font-family:monospace;font-size:13px;letter-spacing:2px}
+#expInfo{text-align:center;font-size:11px;letter-spacing:2px;color:#ff5566;margin-top:6px;padding:10px;background:#1a0000;border-radius:8px;border:1px solid #ff003333;font-weight:700}
+#expInfo b{color:#ffaa00;font-family:monospace;font-size:13px;text-shadow:0 0 8px #ffaa00}
+#gameInfo{text-align:center;font-size:11px;letter-spacing:2px;color:#ff5566;margin-top:6px;padding:10px;background:#1a0000;border-radius:8px;border:1px solid #ff003333;font-weight:700}
+#gameInfo b{color:#00e0ff;font-family:monospace;font-size:13px;letter-spacing:2px;text-shadow:0 0 8px #00e0ff}
+.logout{width:100%;padding:12px;margin-top:14px;color:#ff5566;background:transparent;border:2px solid #ff5566;border-radius:10px;cursor:pointer;font-size:12px;font-weight:900;letter-spacing:4px;transition:.3s}
+.logout:hover{background:#ff5566;color:#fff;box-shadow:0 0 25px #ff5566}
 
-    .esp-health-bg {
-        position: absolute;
-        width: 4px;
-        background: rgba(0,0,0,0.7);
-        border-radius: 2px;
-        display: none;
-        border: 1px solid rgba(0,255,65,0.3);
-    }
-    .esp-health-bg.show { display: block; }
-
-    .esp-distance {
-        position: absolute;
-        font-size: 10px;
-        color: #00FF41;
-        font-family: "Courier New", monospace;
-        font-weight: bold;
-        text-shadow: 0 0 6px #00FF41, 0 0 2px #000;
-        display: none;
-    }
-    .esp-distance.show { display: block; }
-
-    .esp-skeleton {
-        position: absolute;
-        width: 100%; height: 100%;
-        top: 0; left: 0;
-        display: none;
-    }
-    .esp-skeleton.show { display: block; }
-    .esp-skeleton line {
-        stroke: #00FF41;
-        stroke-width: 2;
-        opacity: 0.9;
-        filter: drop-shadow(0 0 4px #00FF41);
-    }
-
-    .esp-tracer {
-        position: absolute;
-        bottom: 0; left: 50%;
-        width: 2px;
-        height: 50%;
-        background: linear-gradient(to top, #00FF41, transparent);
-        transform-origin: bottom center;
-        transform: rotate(-15deg);
-        display: none;
-        box-shadow: 0 0 8px #00FF41;
-    }
-    .esp-tracer.show { display: block; }
-
-    .enemy-count {
-        position: fixed;
-        top: 20px; left: 50%;
-        transform: translateX(-50%);
-        font-size: 22px;
-        font-weight: 800;
-        font-family: "Courier New", monospace;
-        color: #00FF41;
-        text-shadow: 0 0 10px #00FF41, 0 0 4px #000;
-        display: none;
-        z-index: 102;
-        letter-spacing: 3px;
-        animation: glitch 2s infinite;
-    }
-    .enemy-count.show { display: block; }
-    @keyframes glitch {
-        0%,90%,100% { transform: translateX(-50%); }
-        92% { transform: translateX(calc(-50% - 3px)); }
-        94% { transform: translateX(calc(-50% + 3px)); }
-        96% { transform: translateX(-50%); }
-    }
-
-    .aim-crosshair {
-        position: fixed;
-        top: 50%; left: 50%;
-        transform: translate(-50%, -50%);
-        width: 40px; height: 40px;
-        display: none;
-        z-index: 101;
-    }
-    .aim-crosshair.show { display: block; }
-    .aim-crosshair::before,
-    .aim-crosshair::after {
-        content: "";
-        position: absolute;
-        background: #00FF41;
-        box-shadow: 0 0 8px #00FF41;
-    }
-    .aim-crosshair::before {
-        width: 2px; height: 100%;
-        left: 50%; top: 0;
-        transform: translateX(-50%);
-    }
-    .aim-crosshair::after {
-        height: 2px; width: 100%;
-        top: 50%; left: 0;
-        transform: translateY(-50%);
-    }
-
-    .aim-neck {
-        position: fixed;
-        top: 45%; left: 50%;
-        transform: translate(-50%, -50%);
-        width: 24px; height: 24px;
-        border: 2px dashed #FFD700;
-        border-radius: 50%;
-        display: none;
-        z-index: 101;
-        box-shadow: 0 0 10px #FFD700;
-    }
-    .aim-neck.show { display: block; }
-
-    .aim-lock {
-        position: fixed;
-        top: 50%; left: 50%;
-        transform: translate(-50%, -50%);
-        width: 60px; height: 60px;
-        border: 2px solid #FF5252;
-        border-radius: 50%;
-        display: none;
-        z-index: 101;
-        animation: lockPulse 1s infinite;
-        box-shadow: 0 0 15px #FF5252;
-    }
-    .aim-lock.show { display: block; }
-    @keyframes lockPulse {
-        0%,100% { transform: translate(-50%,-50%) scale(1); opacity: 1; }
-        50% { transform: translate(-50%,-50%) scale(1.2); opacity: 0.5; }
-    }
-
-    /* ===== MENU ===== */
-    .menu {
-        position: fixed;
-        top: 50%; left: 50%;
-        transform: translate(-50%, -50%) scale(0.8);
-        width: 340px;
-        background: rgba(10, 15, 30, 0.97);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border-radius: 14px;
-        padding: 14px;
-        box-shadow: 0 20px 60px rgba(0,0,0,0.9), 0 0 0 1px rgba(0,255,65,0.3);
-        opacity: 0;
-        pointer-events: none;
-        transition: all 0.25s ease;
-        z-index: 9999;
-        display: none;
-    }
-    .menu.show {
-        display: block;
-        opacity: 1;
-        pointer-events: auto;
-        transform: translate(-50%, -50%) scale(1);
-    }
-
-    .menu-header {
-        display: flex; align-items: center; justify-content: space-between;
-        margin-bottom: 12px;
-    }
-    .brand .title {
-        font-size: 20px; font-weight: 800;
-        background: linear-gradient(90deg, #fff, #00FF41);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        letter-spacing: 1px;
-    }
-    .brand .sub {
-        font-size: 10px; color: #00FF41;
-        letter-spacing: 3px; margin-top: 2px;
-    }
-    .close-btn {
-        width: 28px; height: 28px;
-        background: #E53935;
-        border: none; border-radius: 6px;
-        color: #fff; font-weight: bold;
-        cursor: pointer; font-size: 14px;
-    }
-
-    .tabs {
-        display: flex; gap: 4px;
-        margin-bottom: 12px;
-        border-bottom: 1px solid #1e3a5f;
-        padding-bottom: 8px;
-    }
-    .tab {
-        flex: 1;
-        padding: 6px 4px;
-        text-align: center;
-        font-size: 11px;
-        color: #666;
-        cursor: pointer;
-        border-radius: 6px;
-        transition: all 0.2s;
-    }
-    .tab.active {
-        color: #00FF41;
-        background: rgba(0,255,65,0.15);
-        font-weight: 600;
-    }
-
-    .features { max-height: 380px; overflow-y: auto; }
-    .features::-webkit-scrollbar { width: 4px; }
-    .features::-webkit-scrollbar-thumb { background: #1e3a5f; border-radius: 4px; }
-
-    .feature {
-        display: flex; align-items: center; justify-content: space-between;
-        padding: 10px 8px;
-        border-radius: 8px;
-        margin-bottom: 4px;
-        transition: background 0.2s;
-    }
-    .feature:hover { background: rgba(0,255,65,0.08); }
-    .feature span { font-size: 13px; color: #ddd; }
-
-    .switch {
-        position: relative;
-        width: 44px; height: 24px;
-        background: #2a2a3e;
-        border-radius: 12px;
-        cursor: pointer;
-        transition: background 0.25s;
-        flex-shrink: 0;
-    }
-    .switch::after {
-        content: "";
-        position: absolute;
-        top: 3px; left: 3px;
-        width: 18px; height: 18px;
-        background: #666;
-        border-radius: 50%;
-        transition: all 0.25s;
-    }
-    .switch.on { background: #00FF41; }
-    .switch.on::after {
-        left: 23px;
-        background: #fff;
-        box-shadow: 0 0 8px rgba(0,255,65,0.8);
-    }
-
-    .status {
-        display: flex; align-items: center; gap: 6px;
-        margin-top: 12px;
-        padding-top: 10px;
-        border-top: 1px solid #1e3a5f;
-        font-size: 11px; color: #00FF41;
-    }
-    .status::before {
-        content: "";
-        width: 7px; height: 7px;
-        background: #00FF41;
-        border-radius: 50%;
-        box-shadow: 0 0 8px #00FF41;
-        animation: pulse 1.5s infinite;
-    }
-    @keyframes pulse {
-        0%,100% { opacity: 1; }
-        50% { opacity: 0.3; }
-    }
-
-    .section-title {
-        font-size: 10px;
-        color: #00FF41;
-        letter-spacing: 2px;
-        padding: 8px 8px 4px;
-        font-weight: 700;
-    }
-    .music-item {
-        display: flex; align-items: center; gap: 10px;
-        padding: 8px;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: background 0.2s;
-        margin-bottom: 4px;
-    }
-    .music-item:hover { background: rgba(0,255,65,0.1); }
-    .music-item.playing { background: rgba(0,255,65,0.2); }
-    .music-icon {
-        width: 28px; height: 28px;
-        border-radius: 50%;
-        background: #1e3a5f;
-        display: flex; align-items: center; justify-content: center;
-        font-size: 12px;
-        flex-shrink: 0;
-        color: #00FF41;
-    }
-    .music-item.playing .music-icon {
-        background: #00FF41;
-        color: #000;
-        animation: pulse 1s infinite;
-    }
-    .music-name {
-        font-size: 12px; color: #ddd;
-        flex: 1;
-    }
-    .music-item.playing .music-name { color: #00FF41; font-weight: 600; }
+#musicUnlock{position:fixed;bottom:20px;right:20px;z-index:9998;padding:12px 18px;background:linear-gradient(180deg,#00e0ff,#0088aa);color:#001a22;border:2px solid #fff;border-radius:50px;font-size:11px;font-weight:900;letter-spacing:2px;cursor:pointer;box-shadow:0 0 25px #00e0ff}
 </style>
 </head>
 <body>
+<div class="box">
 
-<canvas class="matrix-canvas" id="matrixCanvas"></canvas>
+  <div id="login">
+    <div class="logo">
+      <img src="https://samm-vip123.github.io/samm-crack/logo.png"
+           onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%231a0000%22/><text x=%2250%22 y=%2260%22 font-size=%2218%22 fill=%22%23ff0033%22 text-anchor=%22middle%22 font-weight=%22bold%22>SAMM</text></svg>'"
+           alt="SAMM.NET">
+    </div>
+    <h2>SAMM CRACK</h2>
+    <p class="sub">KEY ACTIVATION</p>
+    <div class="divider"></div>
+    <div class="key-wrap">
+      <input id="key" placeholder="XXXX-XXXX-XXXX" maxlength="14">
+    </div>
+    <button class="btn" onclick="checkKey()">KÍCH HOẠT</button>
+    <div id="msg"></div>
+    <div class="divider"></div>
+    <div class="contact">CHƯA CÓ KEY?<br><a id="ibBtn">IB SAMM</a></div>
+  </div>
 
-<div class="esp-layer">
-    <div class="esp-box" id="espBox1" style="top:25%; left:20%; width:120px; height:180px;"></div>
-    <div class="esp-health-bg" id="espHBg1" style="top:25%; left:calc(20% + 124px); height:180px;"></div>
-    <div class="esp-health" id="espHealth1" style="top:25%; left:calc(20% + 124px); height:120px;"></div>
-    <div class="esp-name" id="espName1" style="top:calc(25% - 18px); left:20%;">Player_01</div>
-    <div class="esp-distance" id="espDist1" style="top:calc(25% + 185px); left:20%;">[32m]</div>
+  <div id="verify">
+    <div class="logo">
+      <img src="https://samm-vip123.github.io/samm-crack/logo.png"
+           onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%231a0000%22/><text x=%2250%22 y=%2260%22 font-size=%2218%22 fill=%22%23ff0033%22 text-anchor=%22middle%22 font-weight=%22bold%22>SAMM</text></svg>'"
+           alt="SAMM.NET">
+    </div>
+    <h2>SAMM CRACK</h2>
+    <p class="sub">XÁC THỰC GAME</p>
+    <div class="divider"></div>
+    <p class="verify-title">CHỌN GAME BẠN MUỐN MOD</p>
+    <p class="verify-sub">BẮT BUỘC CHỌN 1 TRONG 2</p>
 
-    <div class="esp-box" id="espBox2" style="top:35%; left:65%; width:100px; height:150px;"></div>
-    <div class="esp-health-bg" id="espHBg2" style="top:35%; left:calc(65% + 104px); height:150px;"></div>
-    <div class="esp-health" id="espHealth2" style="top:35%; left:calc(65% + 104px); height:90px;"></div>
-    <div class="esp-name" id="espName2" style="top:calc(35% - 18px); left:65%;">Player_02</div>
-    <div class="esp-distance" id="espDist2" style="top:calc(35% + 155px); left:65%;">[58m]</div>
-
-    <svg class="esp-skeleton" id="espSkeleton">
-        <line x1="26%" y1="28%" x2="26%" y2="40%"/>
-        <line x1="26%" y1="30%" x2="22%" y2="34%"/>
-        <line x1="26%" y1="30%" x2="30%" y2="34%"/>
-        <line x1="26%" y1="40%" x2="23%" y2="50%"/>
-        <line x1="26%" y1="40%" x2="29%" y2="50%"/>
-        <line x1="26%" y1="28%" x2="26%" y2="26%"/>
-    </svg>
-
-    <div class="esp-tracer" id="espTracer"></div>
-</div>
-
-<div class="enemy-count" id="enemyCount">ENEMY: 4</div>
-
-<div class="aim-crosshair" id="aimCrosshair"></div>
-<div class="aim-neck" id="aimNeck"></div>
-<div class="aim-lock" id="aimLock"></div>
-
-<div class="menu" id="menu">
-    <div class="menu-header">
-        <div class="brand">
-            <div class="title">SAMM VIP</div>
-            <div class="sub">VIP SUITE</div>
-        </div>
-        <button class="close-btn" onclick="hideMenu()">X</button>
+    <div class="game-btn" data-game="FREE FIRE MAX" onclick="selectGame(this)">
+      <div class="game-icon">🔥</div>
+      <div class="game-text"><b>FREE FIRE MAX</b><small>FFM - SERVER MAX</small></div>
+      <div class="game-check">✓</div>
     </div>
 
-    <div class="tabs">
-        <div class="tab active" data-tab="esp">ESP</div>
-        <div class="tab" data-tab="aim">AIM</div>
-        <div class="tab" data-tab="misc">MISC</div>
-        <div class="tab" data-tab="colors">COLORS</div>
-        <div class="tab" data-tab="settings">SETTINGS</div>
+    <div class="game-btn" data-game="FREE FIRE TH" onclick="selectGame(this)">
+      <div class="game-icon">💀</div>
+      <div class="game-text"><b>FREE FIRE TH</b><small>FFTH - SERVER TH</small></div>
+      <div class="game-check">✓</div>
     </div>
 
-    <div class="features" id="features"></div>
+    <button class="verify-btn" id="verifyBtn" onclick="confirmGame()" disabled>XÁC NHẬN</button>
+    <div id="verifyMsg" style="text-align:center;font-size:12px;letter-spacing:2px;font-weight:800;margin-top:12px;min-height:16px"></div>
+  </div>
 
-    <div class="status">ONLINE</div>
+  <div id="device">
+    <div class="logo">
+      <img src="https://samm-vip123.github.io/samm-crack/logo.png"
+           onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%231a0000%22/><text x=%2250%22 y=%2260%22 font-size=%2218%22 fill=%22%23ff0033%22 text-anchor=%22middle%22 font-weight=%22bold%22>SAMM</text></svg>'"
+           alt="SAMM.NET">
+    </div>
+    <h2>SAMM CRACK</h2>
+    <p class="sub">DEVICE VERIFY</p>
+    <div class="divider"></div>
+
+    <p class="device-title">ĐANG XÁC THỰC THIẾT BỊ</p>
+    <p class="device-sub">VUI LÒNG CHỜ TRONG GIÂY LÁT</p>
+
+    <div class="device-circle">
+      <svg viewBox="0 0 180 180">
+        <defs>
+          <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#ff0033"/>
+            <stop offset="50%" stop-color="#ff6688"/>
+            <stop offset="100%" stop-color="#00ff88"/>
+          </linearGradient>
+        </defs>
+        <circle class="track" cx="90" cy="90" r="80"/>
+        <circle class="progress" id="circleProgress" cx="90" cy="90" r="80"/>
+      </svg>
+      <div class="device-num"><span id="percent">0</span><small>%</small></div>
+    </div>
+
+    <div class="device-bar">
+      <div class="device-bar-fill" id="barFill"></div>
+    </div>
+
+    <div class="device-status" id="deviceStatus">ĐANG KHỞI TẠO...</div>
+
+    <div class="device-log" id="deviceLog"></div>
+  </div>
+
+  <div id="menu">
+    <div class="logo">
+      <img src="https://samm-vip123.github.io/samm-crack/logo.png"
+           onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%231a0000%22/><text x=%2250%22 y=%2260%22 font-size=%2218%22 fill=%22%23ff0033%22 text-anchor=%22middle%22 font-weight=%22bold%22>SAMM</text></svg>'"
+           alt="SAMM.NET">
+    </div>
+    <h2>SAMM CRACK</h2>
+    <p class="sub">MENU CHỨC NĂNG</p>
+    <div class="divider"></div>
+
+    <div class="r" data-n="MENU SAMM CRACK"><div class="dot"></div><span>MENU SAMM CRACK</span><div class="badge">OFF</div></div>
+    <div class="r" data-n="AIM BOT"><div class="dot"></div><span>AIM BOT</span><div class="badge">OFF</div></div>
+    <div class="r" data-n="AIM NECK"><div class="dot"></div><span>AIM NECK</span><div class="badge">OFF</div></div>
+    <div class="r" data-n="AIM LOCK"><div class="dot"></div><span>AIM LOCK</span><div class="badge">OFF</div></div>
+    <div class="r" data-n="AIM BODY"><div class="dot"></div><span>AIM BODY</span><div class="badge">OFF</div></div>
+    <div class="r" data-n="AIM MAGIC"><div class="dot"></div><span>AIM MAGIC</span><div class="badge">OFF</div></div>
+    <div class="r" data-n="AIM DRAG"><div class="dot"></div><span>AIM DRAG</span><div class="badge">OFF</div></div>
+    <div class="r" data-n="AIM CỔ"><div class="dot"></div><span>AIM CỔ</span><div class="badge">OFF</div></div>
+    <div class="r" data-n="ESP"><div class="dot"></div><span>ESP</span><div class="badge">OFF</div></div>
+    <div class="r" data-n="MOD SKIN FFM"><div class="dot"></div><span>MOD SKIN FFM</span><div class="badge">OFF</div></div>
+    <div class="r" data-n="MOD SKIN FFTH"><div class="dot"></div><span>MOD SKIN FFTH</span><div class="badge">OFF</div></div>
+
+    <div class="divider"></div>
+
+    <div id="keyInfo">KEY: <b id="keyShow">---</b></div>
+    <div id="expInfo">HẾT HẠN: <b id="expShow">---</b></div>
+    <div id="gameInfo">GAME: <b id="gameShow">---</b></div>
+
+    <button class="logout" onclick="logout()">ĐĂNG XUẤT</button>
+  </div>
+
 </div>
+
+<div id="adminNotify">
+  <div class="admin-head">SAMM THÔNG BÁO</div>
+  <div class="admin-body" id="adminBody"></div>
+</div>
+
+<button id="musicUnlock" style="display:none" onclick="unlockMusic()">BẬT ÂM THANH</button>
+
+<audio id="bgMusic" loop preload="auto">
+  <source src="https://files.catbox.moe/g65v1o.mp3" type="audio/mpeg">
+</audio>
 
 <script>
-    var tabData = {
-        esp: [
-            { name: "Enable ESP", on: false, key: "enableEsp" },
-            { name: "Player box", on: false, key: "playerBox" },
-            { name: "Top tracer", on: false, key: "topTracer" },
-            { name: "Line target: TOP", on: false, key: "lineTarget" },
-            { name: "Health bar", on: false, key: "healthBar" },
-            { name: "Player name", on: false, key: "playerName" },
-            { name: "Distance", on: false, key: "distance" },
-            { name: "Skeleton", on: false, key: "skeleton" },
-            { name: "Enemy count", on: false, key: "enemyCount" }
-        ],
-        aim: [
-            { name: "AIM BOT", on: false, key: "aimBot" },
-            { name: "AIMNECK", on: false, key: "aimNeck" },
-            { name: "AIMLOCK", on: false, key: "aimLock" }
-        ],
-        misc: "music",
-        colors: [
-            { name: "Box color", on: false, key: "cBox" },
-            { name: "Tracer color", on: false, key: "cTracer" },
-            { name: "Name color", on: false, key: "cName" },
-            { name: "Skeleton color", on: false, key: "cSkeleton" }
-        ],
-        settings: [
-            { name: "Save config", on: false, key: "saveConfig" },
-            { name: "Auto load", on: false, key: "autoLoad" },
-            { name: "Anti screenshot", on: false, key: "antiSS" }
-        ]
-    };
+var VALID_KEYS = [
+  "1234-1234-1234",
+  "VIP1-2024-SAMM",
+  "PRO1-2024-CRCK",
+  "TEST-0001-2024",
+  "AAAA-BBBB-CCCC",
+  "MHN6-YZQW-5R43"
+];
 
-    var musicList = [
-        { name: "Nhac 1", url: "https://files.catbox.moe/zy9l6e.mp3" },
-        { name: "Nhac 2", url: "https://files.catbox.moe/g65v1o.mp3" },
-        { name: "Nhac 3", url: "https://files.catbox.moe/zy9l6e.mp3" }
-    ];
+var ZALO_PHONE = "0355757211";
+var selectedGame = "";
+var deviceCheckStarted = false;
 
-    var currentTab = "esp";
-    var currentMusic = -1;
-    var audio = new Audio();
-    var container = document.getElementById("features");
+function pad(n){
+  if(n < 10) return "0" + n;
+  return "" + n;
+}
 
-    // MATRIX RAIN
-    var canvas = document.getElementById("matrixCanvas");
-    var ctx = canvas.getContext("2d");
-    var matrixInterval = null;
-    var columns = [];
-    var fontSize = 14;
-    var chars = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*(){}[]<>";
+function isUsed(key){
+  var arr = JSON.parse(localStorage.getItem("samm_used") || "[]");
+  return arr.indexOf(key) !== -1;
+}
 
-    function resizeCanvas() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        var colCount = Math.floor(canvas.width / fontSize);
-        columns = [];
-        for (var i = 0; i < colCount; i++) {
-            columns[i] = Math.random() * canvas.height / fontSize;
-        }
-    }
+function markUsed(key){
+  var arr = JSON.parse(localStorage.getItem("samm_used") || "[]");
+  if(arr.indexOf(key) === -1){
+    arr.push(key);
+    localStorage.setItem("samm_used", JSON.stringify(arr));
+  }
+}
 
-    function drawMatrix() {
-        ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.font = fontSize + "px monospace";
+function findKeyInfo(key){
+  var arr = JSON.parse(localStorage.getItem("samm_keys") || "[]");
+  for(var i = 0; i < arr.length; i++){
+    if(arr[i].key === key) return arr[i];
+  }
+  return null;
+}
 
-        for (var i = 0; i < columns.length; i++) {
-            var text = chars[Math.floor(Math.random() * chars.length)];
-            var x = i * fontSize;
-            var y = columns[i] * fontSize;
+document.getElementById("key").addEventListener("input", function(){
+  var v = this.value.toUpperCase().replace(/[^A-Z0-9]/g, "");
+  var out = "";
+  for(var i = 0; i < v.length && i < 12; i++){
+    if(i > 0 && i % 4 === 0) out += "-";
+    out += v.charAt(i);
+  }
+  this.value = out;
+});
 
-            if (Math.random() > 0.975) {
-                ctx.fillStyle = "#FFFFFF";
-                ctx.shadowColor = "#00FF41";
-                ctx.shadowBlur = 10;
-            } else {
-                ctx.fillStyle = "#00FF41";
-                ctx.shadowColor = "#00FF41";
-                ctx.shadowBlur = 4;
-            }
-            ctx.fillText(text, x, y);
-            ctx.shadowBlur = 0;
+/* ================= NHẠC NỀN ================= */
+var bgMusic = document.getElementById("bgMusic");
+var musicStarted = false;
 
-            if (y > canvas.height && Math.random() > 0.975) {
-                columns[i] = 0;
-            }
-            columns[i]++;
-        }
-    }
-
-    function startMatrix() {
-        if (matrixInterval) return;
-        resizeCanvas();
-        canvas.classList.add("show");
-        matrixInterval = setInterval(drawMatrix, 33);
-    }
-
-    function stopMatrix() {
-        if (matrixInterval) {
-            clearInterval(matrixInterval);
-            matrixInterval = null;
-        }
-        canvas.classList.remove("show");
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-    }
-
-    window.addEventListener("resize", function() {
-        if (matrixInterval) resizeCanvas();
+function playMusic(){
+  if(musicStarted) return;
+  bgMusic.volume = 0.7;
+  var p = bgMusic.play();
+  if(p && p.then){
+    p.then(function(){
+      musicStarted = true;
+      document.getElementById("musicUnlock").style.display = "none";
+    }).catch(function(){
+      document.getElementById("musicUnlock").style.display = "block";
     });
+  }
+}
 
-    // HELPERS
-    function getEsp(key) {
-        for (var i = 0; i < tabData.esp.length; i++) {
-            if (tabData.esp[i].key === key) return tabData.esp[i].on;
-        }
-        return false;
+function unlockMusic(){
+  bgMusic.play().then(function(){
+    musicStarted = true;
+    document.getElementById("musicUnlock").style.display = "none";
+  }).catch(function(){});
+}
+
+bgMusic.addEventListener("ended", function(){
+  bgMusic.currentTime = 0;
+  bgMusic.play().catch(function(){});
+});
+
+/* ================= THÔNG BÁO ADMIN ================= */
+var notifyTimer = null;
+function showAdminNotify(featureName){
+  var n = document.getElementById("adminNotify");
+  var body = document.getElementById("adminBody");
+  body.innerHTML = '<b>ADMIN SAMM</b> vui lòng ae bật xong rồi vào game nhé, ' +
+                   'nếu vào game <span class="em">không có gì</span> thì ở sảnh rồi mới bật ' +
+                   '<span class="em">' + featureName + '</span> nhé!';
+  n.classList.add("show");
+  if(notifyTimer) clearTimeout(notifyTimer);
+  notifyTimer = setTimeout(function(){
+    n.classList.remove("show");
+  }, 5000);
+}
+
+/* ================= CHECK KEY ================= */
+function checkKey(){
+  var k = document.getElementById("key").value.trim().toUpperCase();
+  var msg = document.getElementById("msg");
+  msg.className = "";
+  msg.textContent = "";
+
+  if(!k){
+    msg.className = "err";
+    msg.textContent = "VUI LÒNG NHẬP KEY";
+    setTimeout(function(){ msg.textContent=""; msg.className=""; }, 1800);
+    return;
+  }
+
+  if(!/^[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}$/.test(k)){
+    msg.className = "err";
+    msg.textContent = "SAI ĐỊNH DẠNG KEY";
+    setTimeout(function(){ msg.textContent=""; msg.className=""; }, 1800);
+    return;
+  }
+
+  if(isUsed(k)){
+    msg.className = "err";
+    msg.textContent = "KEY ĐÃ TỒN TẠI";
+    setTimeout(function(){ msg.textContent=""; msg.className=""; }, 1800);
+    return;
+  }
+
+  var inList = VALID_KEYS.indexOf(k) !== -1;
+  var info = findKeyInfo(k);
+  var ok = false;
+
+  if(inList){
+    ok = true;
+  } else if(info){
+    if(info.exp === 0){
+      ok = true;
+    } else if(Date.now() < info.exp){
+      ok = true;
+    } else {
+      msg.className = "err";
+      msg.textContent = "KEY ĐÃ HẾT HẠN";
+      setTimeout(function(){ msg.textContent=""; msg.className=""; }, 1800);
+      return;
     }
-    function getAim(key) {
-        for (var i = 0; i < tabData.aim.length; i++) {
-            if (tabData.aim[i].key === key) return tabData.aim[i].on;
-        }
-        return false;
+  }
+
+  if(ok){
+    markUsed(k);
+    msg.className = "ok";
+    msg.textContent = "KÍCH HOẠT THÀNH CÔNG";
+    localStorage.setItem("samm_active", k);
+    if(info){
+      localStorage.setItem("samm_active_exp", info.exp);
+      localStorage.setItem("samm_active_cust", info.cust);
+    } else {
+      localStorage.setItem("samm_active_exp", "0");
+      localStorage.setItem("samm_active_cust", "VIP");
+    }
+    setTimeout(function(){
+      document.getElementById("login").style.display = "none";
+      document.getElementById("verify").classList.add("show");
+    }, 800);
+  } else {
+    msg.className = "err";
+    msg.textContent = "KEY KHÔNG HỢP LỆ";
+    setTimeout(function(){ msg.textContent=""; msg.className=""; }, 1800);
+  }
+}
+
+document.getElementById("key").addEventListener("keydown", function(e){
+  if(e.key === "Enter") checkKey();
+});
+
+document.getElementById("ibBtn").onclick = function(){
+  window.open("https://zalo.me/" + ZALO_PHONE, "_blank");
+};
+
+/* ================= CHỌN GAME ================= */
+function selectGame(el){
+  var btns = document.querySelectorAll(".game-btn");
+  for(var i = 0; i < btns.length; i++) btns[i].classList.remove("on");
+  el.classList.add("on");
+  selectedGame = el.dataset.game;
+  document.getElementById("verifyBtn").disabled = false;
+}
+
+function confirmGame(){
+  var vmsg = document.getElementById("verifyMsg");
+  if(!selectedGame){
+    vmsg.style.color = "#ff0033";
+    vmsg.textContent = "CHƯA CHỌN GAME";
+    setTimeout(function(){ vmsg.textContent=""; }, 1500);
+    return;
+  }
+  localStorage.setItem("samm_game", selectedGame);
+  vmsg.style.color = "#00ff88";
+  vmsg.textContent = "ĐÃ CHỌN: " + selectedGame;
+  setTimeout(function(){
+    document.getElementById("verify").classList.remove("show");
+    document.getElementById("device").classList.add("show");
+    playMusic();
+    startDeviceCheck();
+  }, 700);
+}
+
+/* ================= XÁC THỰC THIẾT BỊ ================= */
+var LOG_ITEMS = [
+  {p: 5,  text: "KHỞI TẠO HỆ THỐNG...", ok: false},
+  {p: 12, text: "ĐỌC THÔNG TIN THIẾT BỊ...", ok: false},
+  {p: 20, text: "KIỂM TRA MODEL: OK", ok: true},
+  {p: 28, text: "KIỂM TRA HỆ ĐIỀU HÀNH: OK", ok: true},
+  {p: 36, text: "MÃ HOÁ DEVICE ID: OK", ok: true},
+  {p: 45, text: "KẾT NỐI SERVER SAMM.NET...", ok: false},
+  {p: 54, text: "XÁC THỰC KEY ONLINE: OK", ok: true},
+  {p: 63, text: "CHECK ANTI-CHEAT: OK", ok: true},
+  {p: 72, text: "NẠP MOD VÀO GAME...", ok: false},
+  {p: 82, text: "BYPASS BẢO MẬT: OK", ok: true},
+  {p: 90, text: "TỐI ƯU HOÁ HIỆU NĂNG: OK", ok: true},
+  {p: 96, text: "CHUẨN BỊ MENU...", ok: false},
+  {p: 100, text: "HOÀN TẤT - SẴN SÀNG!", ok: true}
+];
+
+var STATUS_TEXTS = [
+  "ĐANG KHỞI TẠO...",
+  "ĐANG ĐỌC THIẾT BỊ...",
+  "ĐANG KẾT NỐI SERVER...",
+  "ĐANG XÁC THỰC KEY...",
+  "ĐANG NẠP MOD...",
+  "ĐANG TỐI ƯU...",
+  "GẦN XONG..."
+];
+
+function startDeviceCheck(){
+  if(deviceCheckStarted) return;
+  deviceCheckStarted = true;
+
+  var progress = document.getElementById("circleProgress");
+  var percentEl = document.getElementById("percent");
+  var barFill = document.getElementById("barFill");
+  var statusEl = document.getElementById("deviceStatus");
+  var logEl = document.getElementById("deviceLog");
+  var CIRCUMFERENCE = 502;
+
+  var current = 0;
+  var logIdx = 0;
+
+  var interval = setInterval(function(){
+    var step = Math.floor(Math.random() * 3) + 1;
+    current = Math.min(current + step, 100);
+
+    percentEl.textContent = current;
+    var offset = CIRCUMFERENCE - (CIRCUMFERENCE * current / 100);
+    progress.style.strokeDashoffset = offset;
+    barFill.style.width = current + "%";
+
+    var stIdx = Math.min(Math.floor(current / 16), STATUS_TEXTS.length - 1);
+    statusEl.textContent = STATUS_TEXTS[stIdx];
+
+    while(logIdx < LOG_ITEMS.length && current >= LOG_ITEMS[logIdx].p){
+      var item = LOG_ITEMS[logIdx];
+      var div = document.createElement("div");
+      if(item.ok) div.className = "ok";
+      div.textContent = item.text;
+      logEl.appendChild(div);
+      logEl.scrollTop = logEl.scrollHeight;
+      logIdx++;
     }
 
-    function anyFeatureOn() {
-        var espOn = false;
-        var aimOn = false;
-        for (var i = 0; i < tabData.esp.length; i++) {
-            if (tabData.esp[i].on && tabData.esp[i].key !== "enableEsp") espOn = true;
-        }
-        for (var j = 0; j < tabData.aim.length; j++) {
-            if (tabData.aim[j].on) aimOn = true;
-        }
-        return espOn || aimOn;
+    if(current >= 100){
+      clearInterval(interval);
+      statusEl.className = "device-status done";
+      statusEl.textContent = "XÁC THỰC THÀNH CÔNG!";
+      localStorage.setItem("samm_device_ok", "1");
+
+      setTimeout(function(){
+        document.getElementById("device").classList.remove("show");
+        document.getElementById("menu").classList.add("show");
+        showMenuInfo();
+      }, 1000);
     }
+  }, 60);
+}
 
-    function updateEffects() {
-        document.getElementById("espBox1").classList.toggle("show", getEsp("playerBox"));
-        document.getElementById("espBox2").classList.toggle("show", getEsp("playerBox"));
+function showMenuInfo(){
+  var k = localStorage.getItem("samm_active") || "---";
+  var exp = parseInt(localStorage.getItem("samm_active_exp") || "0");
+  var game = localStorage.getItem("samm_game") || "---";
 
-        document.getElementById("espHealth1").classList.toggle("show", getEsp("healthBar"));
-        document.getElementById("espHealth2").classList.toggle("show", getEsp("healthBar"));
-        document.getElementById("espHBg1").classList.toggle("show", getEsp("healthBar"));
-        document.getElementById("espHBg2").classList.toggle("show", getEsp("healthBar"));
+  document.getElementById("keyShow").textContent = k;
+  document.getElementById("gameShow").textContent = game;
 
-        document.getElementById("espName1").classList.toggle("show", getEsp("playerName"));
-        document.getElementById("espName2").classList.toggle("show", getEsp("playerName"));
+  if(exp === 0){
+    document.getElementById("expShow").textContent = "VĨNH VIỄN";
+  } else {
+    var d = new Date(exp);
+    document.getElementById("expShow").textContent =
+      pad(d.getDate()) + "/" + pad(d.getMonth() + 1) + "/" + d.getFullYear() +
+      " " + pad(d.getHours()) + ":" + pad(d.getMinutes());
+  }
+}
 
-        document.getElementById("espDist1").classList.toggle("show", getEsp("distance"));
-        document.getElementById("espDist2").classList.toggle("show", getEsp("distance"));
-
-        document.getElementById("espSkeleton").classList.toggle("show", getEsp("skeleton"));
-        document.getElementById("espTracer").classList.toggle("show", getEsp("topTracer"));
-        document.getElementById("enemyCount").classList.toggle("show", getEsp("enemyCount"));
-
-        document.getElementById("aimCrosshair").classList.toggle("show", getAim("aimBot"));
-        document.getElementById("aimNeck").classList.toggle("show", getAim("aimNeck"));
-        document.getElementById("aimLock").classList.toggle("show", getAim("aimLock"));
-
-        if (anyFeatureOn()) {
-            startMatrix();
-        } else {
-            stopMatrix();
-        }
+/* ================= MENU CHỨC NĂNG ================= */
+var items = document.querySelectorAll(".r");
+for(var i = 0; i < items.length; i++){
+  items[i].onclick = function(){
+    var isOn = this.classList.contains("on");
+    var name = this.dataset.n;
+    for(var j = 0; j < items.length; j++){
+      items[j].classList.remove("on");
+      items[j].querySelector(".badge").textContent = "OFF";
     }
-
-    function renderTab(tab) {
-        currentTab = tab;
-        container.innerHTML = "";
-        var data = tabData[tab];
-
-        if (data === "music") {
-            var title = document.createElement("div");
-            title.className = "section-title";
-            title.textContent = "MUSIC";
-            container.appendChild(title);
-
-            for (var i = 0; i < musicList.length; i++) {
-                (function(index) {
-                    var div = document.createElement("div");
-                    div.className = "music-item" + (currentMusic === index ? " playing" : "");
-                    div.innerHTML =
-                        '<div class="music-icon">' + (currentMusic === index ? "||" : ">") + '</div>' +
-                        '<div class="music-name">' + musicList[index].name + '</div>';
-                    div.addEventListener("click", function() { toggleMusic(index); });
-                    container.appendChild(div);
-                })(i);
-            }
-            return;
-        }
-
-        for (var i = 0; i < data.length; i++) {
-            var div = document.createElement("div");
-            div.className = "feature";
-            div.innerHTML =
-                "<span>" + data[i].name + "</span>" +
-                '<div class="switch ' + (data[i].on ? "on" : "") + '" data-tab="' + tab + '" data-index="' + i + '"></div>';
-            container.appendChild(div);
-        }
+    if(!isOn){
+      this.classList.add("on");
+      this.querySelector(".badge").textContent = "ON";
+      // HIỆN THÔNG BÁO ADMIN SAMM KÈM TÊN CHỨC NĂNG
+      showAdminNotify(name);
     }
+  };
+}
 
-    container.addEventListener("click", function(e) {
-        if (e.target.classList.contains("switch")) {
-            var tab = e.target.dataset.tab;
-            var idx = e.target.dataset.index;
-            e.target.classList.toggle("on");
-            tabData[tab][idx].on = e.target.classList.contains("on");
-            updateEffects();
-        }
-    });
+function logout(){
+  localStorage.removeItem("samm_active");
+  localStorage.removeItem("samm_active_exp");
+  localStorage.removeItem("samm_active_cust");
+  localStorage.removeItem("samm_game");
+  localStorage.removeItem("samm_device_ok");
+  location.reload();
+}
 
-    var tabs = document.querySelectorAll(".tab");
-    for (var i = 0; i < tabs.length; i++) {
-        tabs[i].addEventListener("click", function() {
-            var allTabs = document.querySelectorAll(".tab");
-            for (var j = 0; j < allTabs.length; j++) allTabs[j].classList.remove("active");
-            this.classList.add("active");
-            renderTab(this.dataset.tab);
-        });
+/* ================= LOAD ================= */
+window.addEventListener("load", function(){
+  var saved = localStorage.getItem("samm_active");
+  var game = localStorage.getItem("samm_game");
+  var deviceOk = localStorage.getItem("samm_device_ok");
+  var exp = parseInt(localStorage.getItem("samm_active_exp") || "0");
+
+  if(saved && exp !== 0 && Date.now() > exp){
+    alert("KEY ĐÃ HẾT HẠN - TỰ ĐỘNG ĐĂNG XUẤT");
+    logout();
+    return;
+  }
+
+  if(saved){
+    if(deviceOk && game){
+      document.getElementById("login").style.display = "none";
+      document.getElementById("verify").style.display = "none";
+      document.getElementById("device").style.display = "none";
+      document.getElementById("menu").classList.add("show");
+      showMenuInfo();
+    } else if(game){
+      document.getElementById("login").style.display = "none";
+      document.getElementById("verify").style.display = "none";
+      document.getElementById("device").classList.add("show");
+      playMusic();
+      startDeviceCheck();
+    } else {
+      document.getElementById("login").style.display = "none";
+      document.getElementById("verify").classList.add("show");
     }
+  }
+});
 
-    function toggleMusic(index) {
-        if (currentMusic === index) {
-            audio.pause();
-            currentMusic = -1;
-        } else {
-            audio.src = musicList[index].url;
-            audio.loop = true;
-            audio.play().catch(function(e) { console.log("Khong phat duoc:", e); });
-            currentMusic = index;
-        }
-        renderTab("misc");
-    }
-
-    var menu = document.getElementById("menu");
-    function showMenu() { menu.classList.add("show"); }
-    function hideMenu() { menu.classList.remove("show"); }
-
-    var threeFingerCount = 0;
-    var resetTimer = null;
-
-    document.addEventListener("touchstart", function(e) {
-        if (e.touches.length === 3) {
-            threeFingerCount++;
-            clearTimeout(resetTimer);
-            if (threeFingerCount >= 3) {
-                if (menu.classList.contains("show")) hideMenu();
-                else showMenu();
-                threeFingerCount = 0;
-            } else {
-                resetTimer = setTimeout(function() { threeFingerCount = 0; }, 1000);
-            }
-        }
-    }, { passive: true });
-
-    document.addEventListener("keydown", function(e) {
-        if (e.key === "m" || e.key === "M") {
-            if (menu.classList.contains("show")) hideMenu();
-            else showMenu();
-        }
-    });
-
-    renderTab("esp");
-    updateEffects();
+setInterval(function(){
+  var exp = parseInt(localStorage.getItem("samm_active_exp") || "0");
+  if(exp !== 0 && Date.now() > exp){
+    alert("KEY ĐÃ HẾT HẠN - TỰ ĐỘNG ĐĂNG XUẤT");
+    logout();
+  }
+}, 30000);
 </script>
 </body>
 </html>
